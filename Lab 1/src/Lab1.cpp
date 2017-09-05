@@ -12,6 +12,7 @@
 #include <cstring>
 #include <cctype>
 #include <cstdlib>
+#include <sstream>
 #include "complex.h"
 using namespace std;
 
@@ -55,7 +56,8 @@ int main()
 		{
 			//cout<<"Real: "<<temp.substr(0,pos)<<" ";
 			real=temp.substr(0,pos);
-			r=static_cast<int>(real);
+			stringstream ss(real);
+			ss>>r;
 			cout<<r+1<<" ";
 
 
