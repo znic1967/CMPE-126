@@ -34,14 +34,32 @@ int main()
 	int iAry[50];
 	int rAry[50];
 	string input[50];
-	string parser;
+	string temp;
+	string real;
+	int r;
+	int i;
 	const char cstr[]="";
 	Complex nums[50];
 
 	while (fin>>input[length])
 	{
-		parser=input[length];
-		nums[length].real=parser[0];
+		int pos=0;
+		temp=input[length];
+		pos=temp.find("+");
+		//cout<<pos<<" ";
+		if (pos==-1)
+		{
+			pos=temp.find("-",1);
+		}
+		else
+		{
+			//cout<<"Real: "<<temp.substr(0,pos)<<" ";
+			real=temp.substr(0,pos);
+			r=static_cast<int>(real);
+			cout<<r+1<<" ";
+
+
+		}
 		length++;
 	}
 
