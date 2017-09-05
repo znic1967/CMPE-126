@@ -18,7 +18,7 @@ using namespace std;
 int main()
 {
 
-	//Testing shit
+	//Testing shit2
 	ifstream fin;
 	fin.open("complex.txt");
 	if (fin.fail())
