@@ -18,7 +18,7 @@ class Complex {
 		int getreal();
 		friend Complex operator +(const Complex& coma, const Complex& comb);
 		friend ostream& operator <<(ostream& ost, const Complex &c);
-		void operator =(const Complex& c);
+		void operator =(Complex c);
 	private:
 		int real;
 		int imaginary;

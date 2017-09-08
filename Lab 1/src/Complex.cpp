@@ -27,9 +27,9 @@ int Complex::getimaginary(){
 
 Complex operator +(const Complex& coma, const Complex& comb)
 {
-	int rl=coma.real+comb.real;
-	int imag=coma.imaginary+comb.imaginary;
-	Complex result(rl,imag);
+	Complex result;
+	result.real=coma.real+comb.real;
+	result.imaginary=coma.imaginary+comb.imaginary;
 	return result;
 }
 
@@ -46,8 +46,9 @@ ostream& operator <<(ostream& ost, const Complex &c)
 	return ost;
 }
 
-void Complex::operator =(const Complex& c)
+void Complex::operator =(Complex c)
 {
 	real=c.getreal();
 	imaginary=c.getimaginary();
+
 }

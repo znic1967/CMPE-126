@@ -46,9 +46,7 @@ int main()
 	string simaginary;
 	int r;
 	int i;
-	Complex total;
-	Complex nums[50];
-
+	Complex total(0,0);
 
 	while (fin>>input[length]) //Parse input
 	{
@@ -58,7 +56,6 @@ int main()
 		temp=input[length];
 		pos=temp.find("+");
 		pos2=temp.find("i");
-
 		if (pos==-1) //If imaginary part is negative.
 		{
 			pos=temp.find("-",1);
@@ -77,17 +74,16 @@ int main()
 			sreal=temp.substr(0,pos);
 			simaginary=temp.substr(pos+1,len-1);
 		}
-
 		stringstream sr(sreal);
 		stringstream si(simaginary);
 		sr>>r; //Converts string to int.
 		si>>i; //Converts string to int.
 		Complex cmplx(r,i);
-		nums[length]=cmplx;
-		fout<<nums[length];
+		fout<<cmplx;
 		total=total+cmplx;
 		length++;
 	}
-cout<<total;
-
+	fout<<"Total: "<<total;
+	fin.close();
+	fout.close();
 }
