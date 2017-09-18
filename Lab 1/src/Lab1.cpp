@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : Lab.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 7 September 2017
+// Description : Lab 1
 //============================================================================
 
 #include <iostream>

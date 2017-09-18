@@ -14,15 +14,15 @@ using namespace std;
 class Complex {
 	public:
 		Complex();
-		Complex(int r, int i);
-		int getimaginary();
-		int getreal();
+		Complex(float r, float i);
+		float getimaginary();
+		float getreal();
 		friend Complex operator +(const Complex& coma, const Complex& comb);
 		friend ostream& operator <<(ostream& ost, const Complex &c);
 		void operator =(Complex c);
 	private:
-		int real;
-		int imaginary;
+		float real;
+		float imaginary;
 };
 
 #endif /* COMPLEX_H_ */

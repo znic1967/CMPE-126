@@ -15,14 +15,14 @@ Complex::Complex() {
 	imaginary=0;
 }
 
-Complex::Complex(int r, int i){
+Complex::Complex(float r, float i){
 	real=r;
 	imaginary=i;
 }
-int Complex::getreal(){
+float Complex::getreal(){
 	return real;
 }
-int Complex::getimaginary(){
+float Complex::getimaginary(){
 	return imaginary;
 }
 
@@ -38,11 +38,11 @@ ostream& operator <<(ostream& ost, const Complex &c)
 {
 	if (c.imaginary<0) //If the imaginary number is negative no + is needed in formatting.
 	{
-		ost<<c.real<<c.imaginary<<"i"<<endl;
+		ost<<c.real<<c.imaginary<<"i";
 	}
 	else
 	{
-		ost<<c.real<<"+"<<c.imaginary<<"i"<<endl;
+		ost<<c.real<<"+"<<c.imaginary<<"i";
 	}
 	return ost;
 }
