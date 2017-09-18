@@ -41,7 +41,7 @@ int main() {
 	//Parser =============================
 	int length=0;
 	ComplexDB db;
-	int pos;
+	int pos=0;
 	string input[50];
 	string line;
 	float itmp=0;
@@ -51,41 +51,59 @@ int main() {
 	bool rin=false;
 	bool iin=false;
 	bool flt=false;
-	bool neg=false;
+	bool ineg=false;
 	bool newline=false;
 	while (!fin.eof())
 	{
 		rtmp=0;
 		itmp=0;
+		rin=false;
+		iin=false;
 		getline(fin,line);
+		cout<<"Line: "<<line<<endl;
 		for (unsigned int i=0; i<line.size(); i++)
 		{
-			cout<<line[i]<<" ";
-			if (line[i]=='\n'){
-				cout<<"Newline";
-			}
-			pos=0;
-			//cout<<"Size: "<<line.size();
 			switch(line[i])
 			{
-			case '-':
+			case '.':
 				if (num==true)
 				{
-					rin=true;
+					buffer[pos]=line[i];
+					num=false;
+					flt=true;
+					pos++;
+					//cout<<"buffer point"<<buffer;
+				}
+				break;
+			case '-':
+				if (num==true) //Previous number in imaginary must be negative
+				{
 					rtmp=atof(buffer); //Real value locked in.
+					rin=true;
 					num=false;
 					strcpy(buffer,""); //Clear buffer
 					pos=0;
+					if (rin==true)
+					{
+						buffer[pos]=line[i];
+						pos++;
+						rin=false;
+					}
 				}
-				buffer[pos]=line[i];
+				else
+				{
+					cout<<"buffer: "<<buffer<<endl;
+					buffer[pos]=line[i];
+					pos++;
+				}
 
 				break;
 			case '+':
 				//cout<<"Case: Plus."<<endl;
 				if (num==true) //If the last loop value was a number
 				{
-					rin=true;
 					rtmp=atof(buffer); //Real value locked in.
+					rin=true;
 					//cout<<rtmp<<endl;
 					num=false;
 					strcpy(buffer,""); //Clear buffer
@@ -103,6 +121,7 @@ int main() {
 					pos=0;
 					Complex num(rtmp,itmp);
 					db.add(num); // Add complex number to database;
+					db.print(0);
 				}
 				break;
 			case '0':
@@ -114,30 +133,33 @@ int main() {
 			case '6':
 			case '7':
 			case '8':
-			case '\n':
-				//cout<<"Newline!"<<endl;
-
-				break;
 			case '9':
 				//cout<<"Case: Number"<<endl;
-				num=true;
-				buffer[pos]=line[i];
 				//cout<<"Buffer: "<<buffer<<endl;
-				if(neg==true)
-				{
-
-				}
-				break;
-			case '.':
-				if (num==true)
+				if(flt==true)
 				{
 					buffer[pos]=line[i];
-					num=false;
-					flt=true;
+					flt=false;
+					num=true;
 				}
+				else
+				{
+					num=true;
+					buffer[pos]=line[i];
+					pos++;
+				}
+
+
+				if (i==line.size()-1 &&rin==false)
+				{
+					rtmp=atof(buffer);
+					cout<<"rtmp: "<<rtmp<<endl;
+					Complex num(rtmp,itmp);
+					db.add(num); // Add complex number to database;
+					db.print(0);
+				}
+				break;
 			}
-			db.print(0);
-			pos++;
 		}
 
 	}

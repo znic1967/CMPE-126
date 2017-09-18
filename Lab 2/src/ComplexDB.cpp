@@ -24,12 +24,12 @@ void ComplexDB::add(Complex num){
 }
 
 void ComplexDB::print(int n){
-	if (numbers[n].imaginary<0)
+	if (numbers[n].getimaginary()<0) //Imaginary negative so no need to add +
 	{
-		cout<<numbers[n].real<<numbers[n].imaginary<<"i"<<endl;
+		cout<<numbers[n].getreal()<<numbers[n].getimaginary()<<"i"<<endl;
 	}
 	else
 	{
-	cout<<numbers[n].real<<"+"<<numbers[n].imaginary<<"i"<<endl;
+		cout<<numbers[n].getreal()<<"+"<<numbers[n].getimaginary()<<"i"<<endl;
 	}
 }

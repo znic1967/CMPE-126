@@ -15,14 +15,14 @@ Complex::Complex() {
 	imaginary=0;
 }
 
-Complex::Complex(int r, int i){
+Complex::Complex(float r, float i){
 	real=r;
 	imaginary=i;
 }
-int Complex::getreal(){
+float Complex::getreal(){
 	return real;
 }
-int Complex::getimaginary(){
+float Complex::getimaginary(){
 	return imaginary;
 }
 
