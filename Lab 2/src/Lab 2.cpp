@@ -8,7 +8,11 @@
 
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
+#include <string>
+#include <cstring>
 #include "Complex.h"
+#include "ComplexDB.h"
 
 using namespace std;
 
@@ -36,30 +40,71 @@ int main() {
 
 	//Parser =============================
 	int length=0;
-	int pos=0;
+	ComplexDB db;
+	int pos;
 	string input[50];
-	string temp;
+	string line;
+	float itmp=0;
+	float rtmp=0;
 	char buffer[50]="";
-	bool num=false;
-	while (fin>>input[length])
+	bool num=false; //booleans reflect state in previous loop cycle
+	bool rin=false;
+	bool iin=false;
+	bool flt=false;
+	bool neg=false;
+	bool newline=false;
+	while (!fin.eof())
 	{
-		temp=input[length];
-		for (unsigned int i=0; i<temp.size(); i++)
+		rtmp=0;
+		itmp=0;
+		getline(fin,line);
+		for (unsigned int i=0; i<line.size(); i++)
 		{
-			//cout<<"Size: "<<temp.size();
-			switch(temp[i])
+			cout<<line[i]<<" ";
+			if (line[i]=='\n'){
+				cout<<"Newline";
+			}
+			pos=0;
+			//cout<<"Size: "<<line.size();
+			switch(line[i])
 			{
 			case '-':
-				//cout<<"Niggertive"<<endl;
+				if (num==true)
+				{
+					rin=true;
+					rtmp=atof(buffer); //Real value locked in.
+					num=false;
+					strcpy(buffer,""); //Clear buffer
+					pos=0;
+				}
+				buffer[pos]=line[i];
 
 				break;
 			case '+':
-				//cout<<"pos"<<endl;
+				//cout<<"Case: Plus."<<endl;
+				if (num==true) //If the last loop value was a number
+				{
+					rin=true;
+					rtmp=atof(buffer); //Real value locked in.
+					//cout<<rtmp<<endl;
+					num=false;
+					strcpy(buffer,""); //Clear buffer
+					pos=0;
+					//cout<<"Buffer: "<<buffer<<endl;
+				}
 				break;
 			case 'i':
-				if (num==true){
-					//imaginary=ftoi(buffer);
+				//cout<<"Case: i"<<endl;
+				if (num==true)
+				{
+					itmp=atof(buffer);
+					num=false;
+					strcpy(buffer,""); //Clear buffer
+					pos=0;
+					Complex num(rtmp,itmp);
+					db.add(num); // Add complex number to database;
 				}
+				break;
 			case '0':
 			case '1':
 			case '2':
@@ -69,14 +114,30 @@ int main() {
 			case '6':
 			case '7':
 			case '8':
+			case '\n':
+				//cout<<"Newline!"<<endl;
+
+				break;
 			case '9':
+				//cout<<"Case: Number"<<endl;
 				num=true;
-				if(buffer[0]=='-')
+				buffer[pos]=line[i];
+				//cout<<"Buffer: "<<buffer<<endl;
+				if(neg==true)
 				{
-					buffer[1]=temp[0];
+
 				}
 				break;
+			case '.':
+				if (num==true)
+				{
+					buffer[pos]=line[i];
+					num=false;
+					flt=true;
+				}
 			}
+			db.print(0);
+			pos++;
 		}
 
 	}

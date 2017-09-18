@@ -21,8 +21,8 @@ class Complex {
 		friend ostream& operator <<(ostream& ost, const Complex &c);
 		void operator =(Complex c);
 	private:
-		int real;
-		int imaginary;
+		float real;
+		float imaginary;
 };
 
 #endif /* COMPLEX_H_ */
