@@ -21,6 +21,7 @@ ComplexDB::~ComplexDB() {
 
 void ComplexDB::add(Complex num){
 	numbers[length]=num;
+	length++;
 }
 
 void ComplexDB::print(int n){
@@ -32,4 +33,20 @@ void ComplexDB::print(int n){
 	{
 		cout<<numbers[n].getreal()<<"+"<<numbers[n].getimaginary()<<"i"<<endl;
 	}
+}
+
+void ComplexDB::printall(){
+	for (int i=0;i<length;i++)
+	{
+		cout<<numbers[i]<<" ";
+	}
+}
+
+ostream& operator <<(ostream& ost, const ComplexDB &c)
+{
+	for (int i=0;i<c.length;i++)
+		{
+			ost<<c.numbers[i]<<" ";
+		}
+	return ost;
 }

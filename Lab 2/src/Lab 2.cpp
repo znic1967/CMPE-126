@@ -59,15 +59,23 @@ int main() {
 		itmp=0;
 		rin=false;
 		iin=false;
+//		strcpy(buffer,""); //Clear buffer
+//		num=0;
+//		pos=0;
 		getline(fin,line);
 		cout<<"Line: "<<line<<endl;
+		cout<<"buffer: "<<buffer<<endl;
+		cout<<"num "<<num<<endl;
+		cout<<"pos "<<pos<<endl;
 		for (unsigned int i=0; i<line.size(); i++)
 		{
+
 			switch(line[i])
 			{
 			case '.':
 				if (num==true)
 				{
+					//cout<<"?";
 					buffer[pos]=line[i];
 					num=false;
 					flt=true;
@@ -92,7 +100,8 @@ int main() {
 				}
 				else
 				{
-					cout<<"buffer: "<<buffer<<endl;
+					//cout<<"1";
+					//cout<<"buffer-: "<<buffer<<endl;
 					buffer[pos]=line[i];
 					pos++;
 				}
@@ -121,7 +130,9 @@ int main() {
 					pos=0;
 					Complex num(rtmp,itmp);
 					db.add(num); // Add complex number to database;
-					db.print(0);
+
+
+					cout<<"Current Data: "<<db<<endl;
 				}
 				break;
 			case '0':
@@ -150,14 +161,16 @@ int main() {
 				}
 
 
-				if (i==line.size()-1 &&rin==false)
-				{
-					rtmp=atof(buffer);
-					cout<<"rtmp: "<<rtmp<<endl;
-					Complex num(rtmp,itmp);
-					db.add(num); // Add complex number to database;
-					db.print(0);
-				}
+//				if (i==line.size()-1 &&rin==false)
+//				{
+//					//cout<<"just real";
+//					//cout<<"buffer: "<<buffer;
+//					rtmp=atof(buffer);
+//					//cout<<"rtmp: "<<rtmp<<endl;
+//					Complex num(rtmp,itmp);
+//					db.add(num); // Add complex number to database;
+//					db.print(0);
+//				}
 				break;
 			}
 		}
