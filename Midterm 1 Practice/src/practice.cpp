@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "Stock.h"
 #include "StockDB.h"
 using namespace std;
@@ -17,10 +18,14 @@ void eight()
 	cout<<d++<<endl;
 	//int *b = a;
 }
-
+ostream& operator>> (istream& ist, Stock& s){ //Cannot be put in class cpp file due to implicit this pointer. Fine in main.
+		ist>>s.symbol>>s.cost>>s.shares;
+		return cout;
+	}
 void iotest(){
 
 	Stock s("@",1,2); //Needs to be explicit doesn't work with default constructor
+
 	cout<<"Enter data: ";
 	cin>>s<<s;
 
