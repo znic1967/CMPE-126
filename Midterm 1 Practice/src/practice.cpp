@@ -26,7 +26,7 @@ class Stock{
 		}
 	};
 
-ostream& operator>> (istream&, Stock&){
+ostream& operator>> (istream& in, Stock& s){
 		in>>s.symbol>>s.cost>>s.shares;
 		return cout;
 }
