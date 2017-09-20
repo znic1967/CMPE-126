@@ -1,14 +1,13 @@
-/*
- * ComplexDB.cpp
- *
- *  Created on: Sep 17, 2017
- *      Author: Lt_Ballzacki
- */
 
 #include "Complex.h"
 #include "ComplexDB.h"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <sstream>
+#include <stdlib.h>
+#include <iomanip>
+#include <cstdlib>
 using namespace std;
 
 ComplexDB::ComplexDB() {
@@ -59,4 +58,44 @@ void ComplexDB::load (string file)
 		cout<<"File opened successfully!"<<endl;
 	}
 
+
+	int s = 0;
+	bool neg = false;
+	int real=0, img=0;
+	char ichar='\0';
+	char temp;
+	float sign=1;
+	string line;
+	bool status=true;
+
+	while(fin>>line)
+	{
+		stringstream in;
+		in.str(line);      // IMO, it is easier to deal with stream (versus string).  So, I convert Ln to in
+		cout << "input:<" << line <<">\n";
+
+		while (s<9)
+		{
+			switch(s)
+			{
+				case 0: //i,-i
+					temp=in.peek();
+					if (isdigit(temp)){
+						s=1;
+					}
+					if (temp=='-')
+					cout<<"Temp: "<<temp<<endl;
+					//status=false;
+					break;
+				case 1: //r,i
+					cout<<"case 1"<<endl;
+					break;
+				case 2:
+					cout<<"case 2"<<endl;
+					status=false;
+					break;
+			}
+
+		}
+	}
 }

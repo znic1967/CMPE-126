@@ -15,11 +15,16 @@ class Stock {
 public:
 	Stock();
 	Stock(string s, int c,int sh);
+
+	friend ostream& operator>> (istream&, Stock&);
+	friend ostream& operator<<(ostream& ost, Stock&s);
+	void operator=(const Stock& s);
+	friend bool operator <(const Stock& s1, const Stock& s2);
 	string symbol;
 	int cost;
 	int shares;
-	friend ostream& operator>> (istream&, Stock&);
-	virtual ~Stock();
+private:
+
 };
 
 #endif /* STOCK_H_ */
