@@ -67,6 +67,7 @@ int main() {
 		cout<<"buffer: "<<buffer<<endl;
 		cout<<"num "<<num<<endl;
 		cout<<"pos "<<pos<<endl;
+		cout<<"rin"<<rin<<endl;
 		for (unsigned int i=0; i<line.size(); i++)
 		{
 
@@ -84,6 +85,7 @@ int main() {
 				}
 				break;
 			case '-':
+				cout<<"neg"<<endl;
 				if (num==true) //Previous number in imaginary must be negative
 				{
 					rtmp=atof(buffer); //Real value locked in.
@@ -131,7 +133,6 @@ int main() {
 					Complex num(rtmp,itmp);
 					db.add(num); // Add complex number to database;
 
-
 					cout<<"Current Data: "<<db<<endl;
 				}
 				break;
@@ -145,7 +146,8 @@ int main() {
 			case '7':
 			case '8':
 			case '9':
-				//cout<<"Case: Number"<<endl;
+				cout<<"Case: Number"<<endl;
+
 				//cout<<"Buffer: "<<buffer<<endl;
 				if(flt==true)
 				{
@@ -157,20 +159,20 @@ int main() {
 				{
 					num=true;
 					buffer[pos]=line[i];
-					pos++;
+					pos++;oiiiiiiiiiiiiiii988888888888888888888888888888888888888888888888888888888888
 				}
 
 
-//				if (i==line.size()-1 &&rin==false)
-//				{
-//					//cout<<"just real";
-//					//cout<<"buffer: "<<buffer;
-//					rtmp=atof(buffer);
-//					//cout<<"rtmp: "<<rtmp<<endl;
-//					Complex num(rtmp,itmp);
-//					db.add(num); // Add complex number to database;
-//					db.print(0);
-//				}
+				if (i==line.size()-1 &&rin==false)
+				{
+					//cout<<"just real";
+					cout<<"buffer: "<<buffer;
+					rtmp=atof(buffer);
+					//cout<<"rtmp: "<<rtmp<<endl;
+					Complex num(rtmp,itmp);
+					db.add(num); // Add complex number to database;
+					db.print(0);
+				}
 				break;
 			}
 		}
