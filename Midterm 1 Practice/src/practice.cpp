@@ -18,7 +18,7 @@ void eight()
 	cout<<d++<<endl;
 	//int *b = a;
 }
-ostream& operator>> (istream& ist, Stock& s){ //Cannot be put in class cpp file due to implicit this pointer. Fine in main.
+ostream& operator>> (istream& ist, Stock& s){ //Cannot be put in class cpp file due to implicit this pointer. Fine in main. Only works cuz variables are public.
 		ist>>s.symbol>>s.cost>>s.shares;
 		return cout;
 	}
