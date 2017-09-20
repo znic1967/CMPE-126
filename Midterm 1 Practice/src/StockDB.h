@@ -14,7 +14,10 @@ public:
 	StockDB(int max);
 	void getstocks(string file);
 	void printDB();
-	void sort();
+	void ssort();
+	void bsort();
+	void isort();
+	void swap(Stock &s1, Stock &s2);
 	virtual ~StockDB();
 private:
 	Stock *data;
