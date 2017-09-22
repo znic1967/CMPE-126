@@ -8,6 +8,7 @@
 //TEST
 #include "Complex.h"
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 Complex::Complex() {
@@ -25,7 +26,12 @@ float Complex::getreal(){
 float Complex::getimaginary(){
 	return imaginary;
 }
-
+void Complex::setReal(int a){
+	real = a;
+}
+void Complex::setImaginary(int a){
+	imaginary = a;
+}
 Complex operator +(const Complex& coma, const Complex& comb)
 {
 	Complex result;
@@ -53,3 +59,16 @@ void Complex::operator =(Complex c)
 	imaginary=c.getimaginary();
 
 }
+bool operator <(const Complex& a, const Complex& b){
+	float valA=sqrt(pow(a.real,2)+pow(a.imaginary,2));
+	float valB=sqrt(pow(b.real,2)+pow(b.imaginary,2));
+	if (valA<valB)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+

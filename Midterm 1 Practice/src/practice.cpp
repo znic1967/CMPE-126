@@ -77,6 +77,9 @@ void deepcopy(){
 	for (int i=0;i<10;i++){ //Deep copy 2 or more pointers have their own data.
 		second[i]=first[i];
 	}
+
+	//=================
+
 }
 int main() {
 	iotest();

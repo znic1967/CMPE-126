@@ -1,19 +1,28 @@
 
 #ifndef COMPLEXDB_H_
 #define COMPLEXDB_H_
+#include "complex.h"
+#include <iostream>
+using namespace std;
 
-class ComplexDB:public Complex
+class ComplexDB
 {
 public:
 	ComplexDB();
-	void add(Complex num);
-	void print(int n);
-	void printall();
+	ComplexDB(int max);
+	void load(string file);
+	void add();
+	void CDelete();
+	//void print(int n);
+	//void printall();
 	friend ostream& operator <<(ostream& ost, const ComplexDB &c);
 	virtual ~ComplexDB();
 private:
-	Complex numbers[50];
+	Complex *data;
+	int maxsize;
 	int length;
+	void increase_size(int size);
+	void sort_items();
 };
 
 #endif /* COMPLEXDB_H_ */

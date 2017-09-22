@@ -72,30 +72,68 @@ void ComplexDB::load (string file)
 	{
 		stringstream in;
 		in.str(line);      // IMO, it is easier to deal with stream (versus string).  So, I convert Ln to in
-		cout << "input:<" << line <<">\n";
-
-		while (s<9)
+		//cout << "input:<" << line <<">\n";
+		switch(s)
 		{
-			switch(s)
-			{
-				case 0: //i,-i
-					temp=in.peek();
-					if (isdigit(temp)){
-						s=1;
+			case 0: //i,-i
+				temp=in.peek();
+				if (isdigit(temp)){
+					cout<<"digit";
+					s=1;
+				}
+				if (temp=='+') in.ignore();
+				if (temp=='-'){
+					in.ignore();
+					neg = true;
+				}
+				if (temp=='i'){
+					if (neg) cout << "<-i>(0, -1)\n";
+					else cout << "<i>(0, 1)\n";
+					return;
+				}
+				break;
+			case 1: //r,i
+				//cout<<"case 1"<<endl;
+				in>>real;
+				temp=in.peek();
+				if (in.eof())
+				{
+					if (neg)
+					{
+						real=-real;
+						cout << "<a>" << "("<< real << ", "<< 0 << ")\n";
+						return;
 					}
-					if (temp=='-')
-					cout<<"Temp: "<<temp<<endl;
-					//status=false;
-					break;
-				case 1: //r,i
-					cout<<"case 1"<<endl;
-					break;
-				case 2:
-					cout<<"case 2"<<endl;
-					status=false;
-					break;
-			}
-
+				}
+				if(temp=='i'){
+					if (neg)
+					{
+						real=-real;
+					}
+					cout << "<bi>" << "(" << 0 << ", " << real << ")\n";
+					return;
+				}
+				if (temp=='+')
+				{
+					in.ignore();
+					neg=false;
+					s=2;
+				}
+				if (temp=='-') {
+					in.ignore();
+					neg=true;
+					s=2;
+				}
+				break;
+			case 2: //a+bi, a-bi
+				if (in.peek()=='i') img = 1;
+				else in >> img >> ichar;
+				if (neg) img = - img;
+				cout << "<a+bi>" << "(" << real << ", " << img << ")\n";
+				return;
+				status=false;
+				break;
 		}
+
 	}
 }
