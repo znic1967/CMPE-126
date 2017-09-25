@@ -12,6 +12,12 @@
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	StockDB db;
+
+	string file="stocks.txt";
+	db.load(file);
+	//cout<<"end of program";
+	cout<<db;
 	return 0;
+
 }

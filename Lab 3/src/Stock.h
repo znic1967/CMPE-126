@@ -19,11 +19,23 @@ public:
 
 	//friend ostream& operator>> (istream& ist, Stock& s);
 	friend ostream& operator<<(ostream& ost, Stock& s);
+
 	void operator=(const Stock& s);
 	friend bool operator <(const Stock& s1, const Stock& s2);
 	string symbol;
 	int cost;
 	int shares;
+private:
+
+};
+
+class StockNode
+{
+public:
+	friend istream& operator>>(istream& in, StockNode& s);
+	Stock stk;
+	StockNode* next;
+	StockNode* prev;
 private:
 
 };

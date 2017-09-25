@@ -11,81 +11,69 @@
 #include <fstream>
 using namespace std;
 
-StockDB::StockDB(int max) {
-	maxsize=max;
-	size=0;
-	data=new Stock[maxsize];
-}
-
-StockDB::~StockDB() {
-	delete [] data;
-}
-
-void StockDB::getstocks(string file){
-	ifstream fin;
-	fin.open(file);
-	if (fin.fail()){
-		cout<<"File failed to open..."<<endl;
-	}
-	else{
-		cout<<"File opened"<<endl;
-	}
-
-	string line;
-	while(!fin.eof()){
-		fin>>data[size].symbol>>data[size].cost>>data[size].shares;
-		size++;
-	}
-}
-void StockDB::printDB(){
-	for (int i=0;i<size;i++){
-		cout<<data[i]<<endl;
-	}
-}
-
-void StockDB::ssort(){ //Selection Sort
-	//cout<<size;
-	Stock min;
-	int smallest_index=0;
-	for (int i=0; i <size; i++) {        // sort every target object from 0 to the end
-		min=data[i];    // assume target one is the minimum
-		smallest_index=i;        // remember who is current min
-		for (int j=i+1; j<size; j++){
-			if (data[j] < min) smallest_index=j;// new min is in m
-		}
-		swap(data[i],data[smallest_index]);
-	}
-}
-
-void StockDB::bsort(){ //Bubble sort
-	for (int target=0; target <size; target++) // sort every target object from 0 to the end
+StockDB::~StockDB(){
+	for (StockNode* i=head; i!=NULL; i=i->next)
 	{
-		for (int i=size-1; i>target; i--)
-		{
-				if (data[i] < data[i-1]) // bubble up from the end to target
-				{
-					swap(data[i], data[i-1]);
-				}
-		}
+		delete i;
 	}
 }
-
-void StockDB::isort() {
-	for (int old=0; old <size; old++) {        // take old one out from 0 to end
-		for (int i=old; i >0; i--){
-			if (data[i] < data[i-1])
-			{
-				swap(data[i], data[i-1]);  // old one bubbles to its proper place in new array
-			}
-		}
+StockDB::StockDB()
+{
+	length=0;
+	head=NULL;
+	tail=NULL;
+}
+void StockDB::load(string file)
+{
+	ifstream fin;
+	fin.open(file.c_str());
+	if (fin.fail())
+	{
+		cout<<"File failed to open."<<endl;
+	 //return(false);
 	}
+	else
+	{
+	 cout<<"File opened."<<endl;
+	}
+	while(!fin.eof())
+	{
+	 StockNode *sp = new StockNode();
+	 fin >> *sp;
+	 //cout<<"fin"<<endl;
+	 insert_front(sp);
+	 //cout<<"insert_front"<<endl;
+	 //insert_inorder(sp);
+	 //insert_inorder2pt(sp);
+	}
+	cout<<"end of loop"<<endl;
+	fin.close();
+	cout<<"File closed"<<endl;
+	//(true);
 }
 
-
-void StockDB::swap(Stock &s1, Stock &s2){
-	Stock temp;
-	temp=s1;
-	s1=s2;
-	s2=temp;
+void StockDB::insert_front(StockNode *p) // insert front
+{
+	if (length == 0)
+	{
+		p->prev = p->next = NULL;
+		head = tail = p;
+		length++;
+		return;
+	}
+	p->next = head;
+	p->prev = NULL;
+	p->next->prev = p;
+	head = p;
+	length++;
 }
 
+void StockDB
+ostream& operator<<(ostream& ost, StockDB& s)
+{
+	for (StockNode* i=s.head; i->next!=NULL; i=i->next)
+	{
+		ost<<i->stk;
+	}
+	return ost;
+}
