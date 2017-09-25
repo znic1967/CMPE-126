@@ -17,7 +17,7 @@ ComplexDB::ComplexDB(){
 }
 ComplexDB::ComplexDB(int max){
 	maxsize = max;
-	length = 0;
+	length = -1; //iterator in load function sets it to one on first loop.
 	data = new Complex [maxsize];
 }
 ComplexDB::~ComplexDB() {
@@ -57,88 +57,81 @@ void ComplexDB::load(string file)
 		cout<<"File opened successfully!"<<endl;
 	}
 	string line;
+	stringstream in;
 	char real[5]="";
 	char img[5]="";
 	char buf[5]="";
 	float r=0;
 	int pos=0;
 	int s=0;
-	unsigned int i = 0;
+	char c='a';
+	//unsigned int i = 0;
 	bool neg=false;
 	bool flt=false;
-	while (!fin.eof()){ //Parse input
+	bool e=false;
 
-		getline(fin,line);
+	while (!fin.eof()){
+		cout<<"Data In: "<<data[length];
+		length++;
+		getline(fin,line); //Get line of input
+		in.str(line);
 		cout<<"\nCurrent line: "<<line<<endl;
-
-		while(i<line.size()){
-			char c=line[i];
+		 //get  first char of line.
+		Complex num;
+		while(!e){ //check for end of line
 			cout<<"State: "<<s<<endl;
-			cout<<"Char 0: "<<c<<endl;
 			switch(s){
+
 			case 0: //i,-i
-				//cout<<"Case 0";
-				//cout<<"C: "<<c;
+				in.get(c);
+				if (c=='\0'){
+					e=true;
+				}
 				if(c=='-')
 				{
 					neg=true;
 					//don't step pos
 					//cout<<"neg"<<endl;
 				}
-				if (c=='+')
+				if (c=='+') //==================================
 				{
-					cout<<"+";
-					if (flt){ //if float in and + with no i, its a real float
-						if (neg)
+					if (flt) flt=false; //reset float
+					if (neg)
 						{
-							r=atof(buf)*-1;
+							data[length].setReal((atof(buf)*-1));
 							neg=false;
 						}
-						else
-						{
-							r=atof(buf);
-						}
-						cout<<"Real: "<<r<<endl;
-						cout<<"Buffer: "<<buf<<endl;
-						pos=0;
-						strcpy(buf,""); //clear c-string
+						else data[length].setReal(atof(buf));
 
-					}
+				pos=0;
+				strcpy(buf,""); //clear c-string
+				}
 
-				}
-				if (isdigit(c))
-				{
-					s=1;
-					//return;
-				}
-				if (c=='.')
+				if (isdigit(c)) s=1;
+
+				if (c=='.') //====================================
 				{
 					flt=true;
 					s=2;
 				}
-				if (c=='i')
+				if (c=='i') //====================================
 				{
-					cout<<"i ";
+					//cout<<"i ";
+					if (flt) flt=false;
 					if (neg)
 					{
-						r=atof(buf)*-1;
-						neg=false;
+						data[length].setImaginary((atof(buf)*-1));
+						neg=false; //reset neg bool
 					}
-					else
-					{
-						r=atof(buf);
-					}
+					else data[length].setImaginary(atof(buf));
 				}
-
 				break;
-			case 1: //a or bi
-				//cout<<"Real: ";
-				//cout<<"Case 1";
 
-				//isdigit
-					cout<<"c: "<<c;
+			case 1: //a or bi
+
+					//cout<<"c: "<<c;
 					buf[pos]=c;
-					cout<<"Buffer: "<<buf<<endl;
+					//cout<<"Buffer: "<<buf<<endl;
 					pos++;
 
 				//cout<<buf<<endl;
