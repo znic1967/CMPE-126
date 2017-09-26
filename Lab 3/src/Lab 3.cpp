@@ -12,12 +12,14 @@
 using namespace std;
 
 int main() {
-	StockDB db;
-
+	StockDB db, dbl, dbr;
+	StockNode* snp;
 	string file="stocks.txt";
 	db.load(file);
 	//cout<<"end of program";
 	cout<<db;
+	snp=db.returnMiddle();
+	db.split(snp);
 	return 0;
 
 }

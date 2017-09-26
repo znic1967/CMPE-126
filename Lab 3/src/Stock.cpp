@@ -17,7 +17,7 @@ Stock::Stock(string s, int c,int sh){
 
 
 ostream& operator<<(ostream& ost, Stock& s){
-	ost<<"Symbol: "<<s.symbol<<" Cost: "<<s.cost<<" Shares: "<<s.shares<<endl;
+	ost<<"-"<<s.symbol<<"\t$"<<s.cost<<".00 /share"<<"\tx"<<s.shares<<endl;
 	return ost;
 }
 void Stock::operator=(const Stock& s){
