@@ -1,9 +1,10 @@
-/*
- * StockDB.cpp
- *
- *  Created on: Sep 20, 2017
- *      Author: Lt_Ballzacki
- */
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 1 October 2017
+// Description : Lab 3
+//============================================================================
 
 #include "Stock.h"
 #include "StockDB.h"
@@ -39,28 +40,50 @@ void StockDB::load(string file)
 	{
 	 StockNode *sp = new StockNode();
 	 fin >> *sp;
-	 insert_front(sp);
+	 insert_back(sp);
 	}
 	fin.close();
-	cout<<"File closed"<<endl;
+	cout<<"File closed."<<endl;
+	cout<<"Head: "<<head->stk<<endl;
 }
 
-void StockDB::insert_front(StockNode *p) // insert front
+//void StockDB::insert_front(StockNode *p) // insert front
+//{
+//	if (length == 0)
+//	{
+//		p->prev = p->next = NULL;
+//		head = tail = p;
+//		length++;
+//		//cout<<p->stk;
+//		return;
+//	}
+//	p->next = head;
+//	p->prev = NULL;
+//	p->next->prev = p;
+//	head = p;
+//	length++;
+//	cout<<p->stk;
+//}
+
+void StockDB::insert_back(StockNode *p)
 {
 	if (length == 0)
 	{
-		p->prev = p->next = NULL;
+		p->next = NULL;
 		head = tail = p;
 		length++;
 		return;
 	}
-	p->next = head;
-	p->prev = NULL;
-	p->next->prev = p;
-	head = p;
-	length++;
+	for (StockNode* i=head; i->next!=NULL; i=i->next)
+	{
+		if (i->next==NULL)
+		{
+			p->next=i;
+			tail=p;
+			length++;
+		}
+	}
 }
-
 StockNode* StockDB::returnMiddle()
 {
 	int middle=length/2;

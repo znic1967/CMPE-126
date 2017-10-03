@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 1 October 2017
+// Description : Lab 3
+//============================================================================
+
 #include "Stock.h"
 #include <iostream>
 #include <fstream>
@@ -14,7 +22,6 @@ Stock::Stock(string s, int c,int sh){
 	cost=c;
 	shares=sh;
 }
-
 
 ostream& operator<<(ostream& ost, Stock& s){
 	ost<<"-"<<s.symbol<<"\t$"<<s.cost<<".00 /share"<<"\tx"<<s.shares<<endl;

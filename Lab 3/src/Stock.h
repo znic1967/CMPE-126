@@ -1,9 +1,10 @@
-/*
- * Stock.h
- *
- *  Created on: Sep 20, 2017
- *      Author: Lt_Ballzacki
- */
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 1 October 2017
+// Description : Lab 3
+//============================================================================
 
 #ifndef STOCK_H_
 #define STOCK_H_
@@ -35,7 +36,6 @@ public:
 	friend istream& operator>>(istream& in, StockNode& s);
 	Stock stk;
 	StockNode* next;
-	StockNode* prev;
 private:
 
 };
