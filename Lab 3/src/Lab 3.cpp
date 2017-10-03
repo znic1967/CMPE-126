@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Stock.h"
 #include "StockDB.h"
+#include "StockNode.h"
 using namespace std;
 
 int main() {
@@ -19,7 +20,7 @@ int main() {
 	//cout<<"end of program";
 	cout<<db;
 	snp=db.returnMiddle();
-	db.split(snp);
+	//db.split(snp);
 	return 0;
 
 }

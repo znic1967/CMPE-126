@@ -37,7 +37,3 @@ bool operator <(const Stock& s1, const Stock& s2){
 	return (s1.cost<s2.cost);
 }
 
-istream& operator>>(istream& in, StockNode& s){
-	in>>s.stk.symbol>>s.stk.cost>>s.stk.shares;
-	return in;
-}

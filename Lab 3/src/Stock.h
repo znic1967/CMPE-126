@@ -30,15 +30,5 @@ private:
 
 };
 
-class StockNode
-{
-public:
-	friend istream& operator>>(istream& in, StockNode& s);
-	Stock stk;
-	StockNode* next;
-private:
-
-};
-
 #endif /* STOCK_H_ */
 

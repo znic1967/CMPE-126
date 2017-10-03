@@ -8,6 +8,7 @@
 
 #include "Stock.h"
 #include "StockDB.h"
+#include "StockNode.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -41,6 +42,7 @@ void StockDB::load(string file)
 	 StockNode *sp = new StockNode();
 	 fin >> *sp;
 	 insert_back(sp);
+	 //cout<<sp->stk;
 	}
 	fin.close();
 	cout<<"File closed."<<endl;
@@ -67,6 +69,7 @@ void StockDB::load(string file)
 
 void StockDB::insert_back(StockNode *p)
 {
+	p->next = NULL;
 	if (length == 0)
 	{
 		p->next = NULL;
@@ -74,14 +77,11 @@ void StockDB::insert_back(StockNode *p)
 		length++;
 		return;
 	}
-	for (StockNode* i=head; i->next!=NULL; i=i->next)
+
+	else
 	{
-		if (i->next==NULL)
-		{
-			p->next=i;
-			tail=p;
-			length++;
-		}
+		while(tail->next) tail=tail->next;
+		tail->next=p;
 	}
 }
 StockNode* StockDB::returnMiddle()
@@ -97,7 +97,7 @@ StockNode* StockDB::returnMiddle()
 			}
 			counter++;
 		}
-	cout<<"\nMiddle: "<<mid->stk;
+	cout<<"\nMiddle: "<<mid->getStock();
 	cout<<"Position: "<<middle<<endl; cout<<endl;
 	return mid; //Returns a node pointer to the middle address
 }
@@ -119,7 +119,7 @@ ostream& operator<<(ostream& ost, StockDB& s)
 {
 	for (StockNode* i=s.head; i->next!=NULL; i=i->next)
 	{
-		ost<<i->stk;
+		cout<<i->stk;
 	}
 	return ost;
 }
