@@ -19,7 +19,7 @@ int main() {
 	db.load(file);
 	//cout<<"end of program";
 	cout<<db;
-	snp=db.returnMiddle();
+	//snp=db.returnMiddle();
 	//db.split(snp);
 	return 0;
 

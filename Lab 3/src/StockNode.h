@@ -16,16 +16,16 @@ public:
 	StockNode();
 	friend istream& operator>>(istream& in, StockNode& s);
 
-	//Getters
-	Stock getStock();
-	StockNode* getNext();
-
-	//Setters
-	void setStock(Stock s);
-	void setNext(StockNode* n);
-private:
+//	//Getters
+//	Stock getStock();
+//	StockNode* getNext();
+//
+//	//Setters
+//	void setStock(Stock s);
+//	void setNext(StockNode* n);
 	Stock stk;
 	StockNode* next;
+private:
 
 };
 #endif /* STOCKNODE_H_ */

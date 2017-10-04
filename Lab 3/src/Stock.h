@@ -19,6 +19,7 @@ public:
 	Stock(string s, int c,int sh);
 	void operator=(const Stock& s);
 	friend bool operator <(const Stock& s1, const Stock& s2);
+	friend ostream& operator<<(ostream& ost, Stock& s);
 
 	//Getters
 	string getSymbol();
