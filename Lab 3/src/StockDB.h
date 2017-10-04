@@ -15,15 +15,17 @@ class StockDB
 {
 public:
     void load(string);
-    //void print();
     void print_rev();
     StockNode* returnMiddle();
-    //void insert_front(StockNode *p);
     void insert_back(StockNode *p);
-    void split (StockNode*);
+    void split(StockDB left, StockDB right, StockNode* middle);
     ~StockDB();
     StockDB();
     friend ostream& operator<<(ostream& ost, StockDB& s);
+
+    //Getters
+    StockNode* getHead();
+    StockNode* getTail();
 private:
     StockNode* head;
     StockNode* tail;

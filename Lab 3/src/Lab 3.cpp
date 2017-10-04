@@ -14,14 +14,14 @@ using namespace std;
 
 int main() {
 	StockDB db, dbl, dbr;
-	StockNode* snp;
+	StockNode* mid;
 	string file="stocks.txt";
 	db.load(file);
 	//cout<<"end of program";
 	cout<<"=======Data Loaded======="<<endl;
 	cout<<db;
-	snp=db.returnMiddle();
-	//db.split(snp);
+	mid=db.returnMiddle(); //Returns a pointer to the middle element
+	db.split(dbl,dbr,mid);
 	return 0;
 
 }

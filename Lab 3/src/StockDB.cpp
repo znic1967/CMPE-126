@@ -25,6 +25,15 @@ StockDB::StockDB()
 	head=NULL;
 	tail=NULL;
 }
+
+StockNode* StockDB::getHead()
+{
+	return head;
+}
+StockNode* StockDB::getTail()
+{
+	return tail;
+}
 void StockDB::load(string file)
 {
 	ifstream fin;
@@ -88,19 +97,17 @@ StockNode* StockDB::returnMiddle()
 	return mid; //Returns a node pointer to the middle address
 }
 
-//void StockDB::split(StockNode* snp)
-//{
-//	cout<<"===First list==="<<endl;
-//	for (StockNode* i=head; i->next!=snp->next; i=i->next)
-//		{
-//			cout<<i->stk;
-//		}
-//	cout<<"===Second list==="<<endl;
-//		for (StockNode* i=snp; i->next!=NULL; i=i->next)
-//			{
-//				cout<<i->stk;
-//			}
-//}
+void StockDB::split(StockDB left, StockDB right, StockNode* middle)
+{
+	left.head=head;
+	left.tail=middle;
+	right.head=middle->next;
+	right.tail=tail;
+	cout<<"=======First List======"<<endl;
+	cout<<left;
+	cout<<"=======Right List======"<<endl;
+	cout<<right;
+}
 
 
 ostream& operator<<(ostream& ost, StockDB& s)
