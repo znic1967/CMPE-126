@@ -66,25 +66,27 @@ void StockDB::insert_back(StockNode *p)
 	}
 	tail->next=p;
 	tail=p;
+	length++;
 	//cout<<"Insert";
 }
-//StockNode* StockDB::returnMiddle()
-//{
-//	int middle=length/2;
-//	int counter=0;
-//	StockNode* mid;
-//	for (StockNode* i=head; i->next!=NULL; i=i->next)
-//		{
-//			if (counter==middle)
-//			{
-//				mid=i;
-//			}
-//			counter++;
-//		}
-//	cout<<"\nMiddle: "<<mid->getStock();
-//	cout<<"Position: "<<middle<<endl; cout<<endl;
-//	return mid; //Returns a node pointer to the middle address
-//}
+StockNode* StockDB::returnMiddle()
+{
+	int middle=length/2;
+	int counter=0;
+	StockNode* mid;
+	for (StockNode* i=head; i->next!=NULL; i=i->next)
+		{
+			if (counter==middle)
+			{
+				mid=i;
+			}
+			counter++;
+		}
+	cout<<"\n\nLength :"<<length<<endl;
+	cout<<"Middle: "<<mid->stk<<endl;
+	cout<<"Position: "<<middle<<endl; cout<<endl;
+	return mid; //Returns a node pointer to the middle address
+}
 
 //void StockDB::split(StockNode* snp)
 //{
@@ -103,7 +105,9 @@ void StockDB::insert_back(StockNode *p)
 
 ostream& operator<<(ostream& ost, StockDB& s)
 {
-	for (StockNode* i=s.head; i->next!=NULL; i=i->next)
+	cout<<"Head: "<<s.head->stk<<endl;
+	cout<<"Tail: "<<s.tail->stk<<endl;
+	for (StockNode* i=s.head; i!=NULL; i=i->next)
 	{
 		cout<<i->stk;
 	}
