@@ -13,12 +13,12 @@
 #include <fstream>
 using namespace std;
 
-StockDB::~StockDB(){
-	for (StockNode* i=head; i!=NULL; i=i->next)
-	{
-		delete i;
-	}
-}
+//StockDB::~StockDB(){
+//	for (StockNode* i=head; i!=NULL; i=i->next)
+//	{
+//		delete i;
+//	}
+//}
 StockDB::StockDB()
 {
 	length=0;
@@ -46,43 +46,17 @@ void StockDB::load(string file)
 	}
 	fin.close();
 	cout<<"File closed."<<endl;
-	cout<<"Head: "<<head->stk<<endl;
+	//cout<<"Head: "<<head->stk<<endl;
 }
 
-//void StockDB::insert_front(StockNode *p) // insert front
-//{
-//	if (length == 0)
-//	{
-//		p->prev = p->next = NULL;
-//		head = tail = p;
-//		length++;
-//		//cout<<p->stk;
-//		return;
-//	}
-//	p->next = head;
-//	p->prev = NULL;
-//	p->next->prev = p;
-//	head = p;
-//	length++;
-//	cout<<p->stk;
-//}
 
 void StockDB::insert_back(StockNode *p)
 {
-	p->next = NULL;
-	if (length == 0)
-	{
-		p->next = NULL;
-		head = tail = p;
-		length++;
-		return;
-	}
-
-	else
-	{
-		while(tail->next) tail=tail->next;
-		tail->next=p;
-	}
+	StockNode* tmptail;
+	tmptail=tail->getNext();
+	tmptail=p;
+	p.setNext(NULL);
+	tail=p;
 }
 StockNode* StockDB::returnMiddle()
 {

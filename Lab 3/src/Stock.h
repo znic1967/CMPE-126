@@ -17,17 +17,22 @@ class Stock {
 public:
 	Stock();
 	Stock(string s, int c,int sh);
-
-	//friend ostream& operator>> (istream& ist, Stock& s);
-	friend ostream& operator<<(ostream& ost, Stock& s);
-
 	void operator=(const Stock& s);
 	friend bool operator <(const Stock& s1, const Stock& s2);
+
+	//Getters
+	string getSymbol();
+	int getCost();
+	int getShares();
+
+	//Setters
+	void setSymbol(string s);
+	void setCost(int c);
+	void setShares(int s);
+private:
 	string symbol;
 	int cost;
 	int shares;
-private:
-
 };
 
 #endif /* STOCK_H_ */

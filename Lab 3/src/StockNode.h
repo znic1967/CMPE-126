@@ -15,8 +15,14 @@ class StockNode
 public:
 	StockNode();
 	friend istream& operator>>(istream& in, StockNode& s);
+
+	//Getters
 	Stock getStock();
 	StockNode* getNext();
+
+	//Setters
+	void setStock(Stock s);
+	void setNext(StockNode* n);
 private:
 	Stock stk;
 	StockNode* next;

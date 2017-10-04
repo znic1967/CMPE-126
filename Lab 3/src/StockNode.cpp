@@ -22,9 +22,17 @@ StockNode* StockNode::getNext()
 {
 	return next;
 }
-
+void StockNode::setNext(StockNode* n)
+{
+	next=n;
+}
+void StockNode::setStock(Stock s)
+{
+	stk=s;
+}
 
 istream& operator>>(istream& in, StockNode& s){
-	in>>s.stk.symbol>>s.stk.cost>>s.stk.shares;
+	in>>s.getStock().getSymbol();
+			//s.stk.cost>>s.stk.shares;
 	return in;
 }

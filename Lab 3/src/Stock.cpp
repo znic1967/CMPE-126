@@ -23,8 +23,37 @@ Stock::Stock(string s, int c,int sh){
 	shares=sh;
 }
 
+string Stock::getSymbol()
+{
+	return symbol;
+}
+int Stock::getCost()
+{
+	return cost;
+}
+
+int Stock::getShares()
+{
+	return shares;
+}
+void Stock::setSymbol(string s)
+{
+	symbol=s;
+}
+
+void Stock::setCost(int c)
+{
+	cost=c;
+}
+void Stock::setShares(int s)
+{
+	shares=s;
+}
 ostream& operator<<(ostream& ost, Stock& s){
-	ost<<"-"<<s.symbol<<"\t$"<<s.cost<<".00 /share"<<"\tx"<<s.shares<<endl;
+	ost<<"-"<<s.getSymbol();
+	ost<<"\t$"<<s.getCost();
+	ost<<".00 /share"<<"\tx"<<s.getShares();
+	ost<<endl;
 	return ost;
 }
 void Stock::operator=(const Stock& s){
