@@ -97,16 +97,18 @@ StockNode* StockDB::returnMiddle()
 	return mid; //Returns a node pointer to the middle address
 }
 
-void StockDB::split(StockDB db2, StockNode* middle)
+StockDB StockDB::split(StockDB db2, StockNode* middle)
 {
 	db2.head=middle->next;
 	db2.tail=tail;
-	//tail=middle;
-	//tail->next=NULL;
+	db2.length=length/2;
+	tail=middle;
+	tail->next=NULL;
 	//cout<<"Head: "<<head->stk;
 	//cout<<"Tail: "<<tail->stk;
 	//cout<<"Head2: "<<db2.head->stk;
 	//cout<<"Tail2: "<<db2.tail->stk;
+	return db2;
 }
 ostream& operator<<(ostream& ost, StockDB& s)
 {

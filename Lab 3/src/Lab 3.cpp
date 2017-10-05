@@ -21,7 +21,7 @@ int main() {
 	cout<<"=======Data Loaded======="<<endl;
 	cout<<db;
 	mid=db.returnMiddle(); //Returns a pointer to the middle element
-	db.split(db2,mid);
+	db2=db.split(db2,mid); //Set db2 to a list returned from split
 	cout<<"=======Left List======"<<endl;
 	cout<<db;
 	cout<<"\n=======Right List======"<<endl;
