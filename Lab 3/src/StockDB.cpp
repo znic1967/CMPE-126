@@ -13,12 +13,12 @@
 #include <fstream>
 using namespace std;
 
-StockDB::~StockDB(){
-	for (StockNode* i=head; i!=NULL; i=i->next)
-	{
-		delete i;
-	}
-}
+//StockDB::~StockDB(){
+//	for (StockNode* i=head; i!=NULL; i=i->next)
+//	{
+//		delete i;
+//	}
+//}
 StockDB::StockDB()
 {
 	length=0;
@@ -97,23 +97,21 @@ StockNode* StockDB::returnMiddle()
 	return mid; //Returns a node pointer to the middle address
 }
 
-void StockDB::split(StockDB left, StockDB right, StockNode* middle)
+void StockDB::split(StockDB db2, StockNode* middle)
 {
-	StockNode* right_head=middle->next;
-	left.head=head;
-	left.tail=middle;
-	right.head=right_head;
-	right.tail=tail;
-	left.tail->next=NULL;
-	cout<<"=======First List======"<<endl;
-	cout<<left;
-	cout<<"\n=======Right List======"<<endl;
-	cout<<right;
+	db2.head=middle->next;
+	db2.tail=tail;
+	//tail=middle;
+	//tail->next=NULL;
+	//cout<<"Head: "<<head->stk;
+	//cout<<"Tail: "<<tail->stk;
+	//cout<<"Head2: "<<db2.head->stk;
+	//cout<<"Tail2: "<<db2.tail->stk;
 }
 ostream& operator<<(ostream& ost, StockDB& s)
 {
-	cout<<"Head: "<<s.head->stk<<endl;
-	cout<<"Tail: "<<s.tail->stk<<endl;
+	//cout<<"Head: "<<s.head->stk<<endl;
+	//cout<<"Tail: "<<s.tail->stk<<endl;
 	for (StockNode* i=s.head; i!=NULL; i=i->next)
 	{
 		cout<<i->stk;

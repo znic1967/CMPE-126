@@ -18,8 +18,8 @@ public:
     void print_rev();
     StockNode* returnMiddle();
     void insert_back(StockNode *p);
-    void split(StockDB left, StockDB right, StockNode* middle);
-    ~StockDB();
+    void split(StockDB db2, StockNode* middle);
+    //~StockDB();
     StockDB();
     friend ostream& operator<<(ostream& ost, StockDB& s);
 

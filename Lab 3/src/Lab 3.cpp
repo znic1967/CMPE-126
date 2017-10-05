@@ -13,7 +13,7 @@
 using namespace std;
 
 int main() {
-	StockDB db, dbl, dbr;
+	StockDB db, db2;
 	StockNode* mid;
 	string file="stocks.txt";
 	db.load(file);
@@ -21,7 +21,12 @@ int main() {
 	cout<<"=======Data Loaded======="<<endl;
 	cout<<db;
 	mid=db.returnMiddle(); //Returns a pointer to the middle element
-	db.split(dbl,dbr,mid);
+	db.split(db2,mid);
+	cout<<"=======Left List======"<<endl;
+	cout<<db;
+	cout<<"\n=======Right List======"<<endl;
+	//cout<<db2.getHead()->stk<<endl;
+	cout<<db2;
 	return 0;
 
 }
