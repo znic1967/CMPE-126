@@ -14,23 +14,23 @@ StockNode::StockNode() {
 	next=NULL;
 }
 
-//Stock StockNode::getStock()
-//{
-//	return stk;
-//}
-//
-//StockNode* StockNode::getNext()
-//{
-//	return next;
-//}
-//void StockNode::setNext(StockNode* n)
-//{
-//	next=n;
-//}
-//void StockNode::setStock(Stock s)
-//{
-//	stk=s;
-//}
+Stock StockNode::getStock()
+{
+	return stk;
+}
+
+StockNode* StockNode::getNext()
+{
+	return next;
+}
+void StockNode::setNext(StockNode* n)
+{
+	next=n;
+}
+void StockNode::setStock(Stock s)
+{
+	stk=s;
+}
 
 istream& operator>>(istream& in, StockNode& s){
 	Stock tmp;

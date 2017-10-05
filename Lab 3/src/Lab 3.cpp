@@ -17,7 +17,6 @@ int main() {
 	StockNode* mid;
 	string file="stocks.txt";
 	db.load(file);
-	//cout<<"end of program";
 	cout<<"=======Data Loaded======="<<endl;
 	cout<<db;
 	mid=db.returnMiddle(); //Returns a pointer to the middle element
@@ -25,8 +24,5 @@ int main() {
 	cout<<"=======Left List======"<<endl;
 	cout<<db;
 	cout<<"\n=======Right List======"<<endl;
-	//cout<<db2.getHead()->stk<<endl;
 	cout<<db2;
-	return 0;
-
 }

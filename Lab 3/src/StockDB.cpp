@@ -13,12 +13,6 @@
 #include <fstream>
 using namespace std;
 
-//StockDB::~StockDB(){
-//	for (StockNode* i=head; i!=NULL; i=i->next)
-//	{
-//		delete i;
-//	}
-//}
 StockDB::StockDB()
 {
 	length=0;
@@ -45,45 +39,37 @@ void StockDB::load(string file)
 	else
 	{
 	 cout<<"File opened."<<endl;
-	// cout<<"Here";
 	}
-	//cout<<"Here1";
 	while(!fin.eof())
 	{
 	 StockNode *sp = new StockNode();
-	// cout<<"Here";
 	 fin >> *sp;
-	 //cout<<"Input";
 	 insert_back(sp);
-	 //cout<<sp->stk;
 	}
 	fin.close();
 	cout<<"File closed."<<endl;
-	//cout<<"Head: "<<head->stk<<endl;
 }
-
 
 void StockDB::insert_back(StockNode *p)
 {
-	p->next=NULL;
+	p->setNext(NULL);
 	if (length==0)
 	{
-		p->next = NULL;
+		p->setNext(NULL);
 		 head = tail = p;
 		 length++;
 		 return;
 	}
-	tail->next=p;
+	tail->setNext(p);
 	tail=p;
 	length++;
-	//cout<<"Insert";
 }
 StockNode* StockDB::returnMiddle()
 {
 	int middle=length/2;
 	int counter=0;
 	StockNode* mid;
-	for (StockNode* i=head; i->next!=NULL; i=i->next)
+	for (StockNode* i=head; i->getNext()!=NULL; i=i->getNext())
 		{
 			if (counter==middle)
 			{
@@ -91,32 +77,27 @@ StockNode* StockDB::returnMiddle()
 			}
 			counter++;
 		}
-	cout<<"\nLength :"<<length<<endl;
-	cout<<"Middle: "<<mid->stk<<endl;
+	Stock tmp=mid->getStock();
+	cout<<"\nMiddle: "<<tmp;
 	cout<<"Position: "<<middle<<endl; cout<<endl;
 	return mid; //Returns a node pointer to the middle address
 }
 
 StockDB StockDB::split(StockDB db2, StockNode* middle)
 {
-	db2.head=middle->next;
+	db2.head=middle->getNext();
 	db2.tail=tail;
 	db2.length=length/2;
 	tail=middle;
-	tail->next=NULL;
-	//cout<<"Head: "<<head->stk;
-	//cout<<"Tail: "<<tail->stk;
-	//cout<<"Head2: "<<db2.head->stk;
-	//cout<<"Tail2: "<<db2.tail->stk;
+	tail->setNext(NULL);
 	return db2;
 }
 ostream& operator<<(ostream& ost, StockDB& s)
 {
-	//cout<<"Head: "<<s.head->stk<<endl;
-	//cout<<"Tail: "<<s.tail->stk<<endl;
-	for (StockNode* i=s.head; i!=NULL; i=i->next)
+	for (StockNode* i=s.head; i!=NULL; i=i->getNext())
 	{
-		cout<<i->stk;
+		Stock tmp=i->getStock();
+		cout<<tmp;
 	}
 	return ost;
 }
