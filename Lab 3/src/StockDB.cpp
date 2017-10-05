@@ -5,7 +5,6 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-
 #include "Stock.h"
 #include "StockDB.h"
 #include "StockNode.h"
@@ -19,7 +18,6 @@ StockDB::StockDB()
 	head=NULL;
 	tail=NULL;
 }
-
 StockNode* StockDB::getHead()
 {
 	return head;
@@ -49,7 +47,6 @@ void StockDB::load(string file)
 	fin.close();
 	cout<<"File closed."<<endl;
 }
-
 void StockDB::insert_back(StockNode *p)
 {
 	p->setNext(NULL);
@@ -82,7 +79,6 @@ StockNode* StockDB::returnMiddle()
 	cout<<"Position: "<<middle<<endl; cout<<endl;
 	return mid; //Returns a node pointer to the middle address
 }
-
 StockDB StockDB::split(StockDB db2, StockNode* middle)
 {
 	db2.head=middle->getNext();

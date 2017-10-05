@@ -5,7 +5,6 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-
 #include "Stock.h"
 #include <iostream>
 #include <fstream>
@@ -16,13 +15,11 @@ Stock::Stock() {
 	cost=0;
 	shares=0;
 }
-
 Stock::Stock(string s, int c,int sh){
 	symbol=s;
 	cost=c;
 	shares=sh;
 }
-
 string Stock::getSymbol()
 {
 	return symbol;
@@ -31,7 +28,6 @@ int Stock::getCost()
 {
 	return cost;
 }
-
 int Stock::getShares()
 {
 	return shares;
@@ -40,7 +36,6 @@ void Stock::setSymbol(string s)
 {
 	symbol=s;
 }
-
 void Stock::setCost(int c)
 {
 	cost=c;
@@ -54,11 +49,9 @@ void Stock::operator=(const Stock& s){
 	cost=s.cost;
 	shares=s.shares;
 }
-
 bool operator <(const Stock& s1, const Stock& s2){
 	return (s1.cost<s2.cost);
 }
-
 ostream& operator<<(ostream& ost, Stock& s){
 	ost<<"-"<<s.getSymbol();
 	ost<<"\t$"<<s.getCost();

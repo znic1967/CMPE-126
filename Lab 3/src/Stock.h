@@ -5,7 +5,6 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-
 #ifndef STOCK_H_
 #define STOCK_H_
 
@@ -35,6 +34,5 @@ private:
 	int cost;
 	int shares;
 };
-
 #endif /* STOCK_H_ */
 

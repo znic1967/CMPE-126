@@ -5,7 +5,6 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-
 #include "StockNode.h"
 #include "Stock.h"
 
@@ -13,12 +12,10 @@ StockNode::StockNode() {
 	stk=Stock();
 	next=NULL;
 }
-
 Stock StockNode::getStock()
 {
 	return stk;
 }
-
 StockNode* StockNode::getNext()
 {
 	return next;
@@ -31,7 +28,6 @@ void StockNode::setStock(Stock s)
 {
 	stk=s;
 }
-
 istream& operator>>(istream& in, StockNode& s){
 	Stock tmp;
 	string sym;

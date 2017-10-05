@@ -5,9 +5,9 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-
 #ifndef STOCKDB_H_
 #define STOCKDB_H_
+
 #include "Stock.h"
 #include "StockNode.h"
 

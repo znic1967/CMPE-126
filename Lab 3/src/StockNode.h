@@ -5,9 +5,9 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-
 #ifndef STOCKNODE_H_
 #define STOCKNODE_H_
+
 #include <iostream>
 #include <fstream>
 #include "stock.h"
