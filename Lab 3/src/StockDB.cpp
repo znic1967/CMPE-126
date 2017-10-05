@@ -91,7 +91,7 @@ StockNode* StockDB::returnMiddle()
 			}
 			counter++;
 		}
-	cout<<"\n\nLength :"<<length<<endl;
+	cout<<"\nLength :"<<length<<endl;
 	cout<<"Middle: "<<mid->stk<<endl;
 	cout<<"Position: "<<middle<<endl; cout<<endl;
 	return mid; //Returns a node pointer to the middle address
@@ -99,17 +99,17 @@ StockNode* StockDB::returnMiddle()
 
 void StockDB::split(StockDB left, StockDB right, StockNode* middle)
 {
+	StockNode* right_head=middle->next;
 	left.head=head;
 	left.tail=middle;
-	right.head=middle->next;
+	right.head=right_head;
 	right.tail=tail;
+	left.tail->next=NULL;
 	cout<<"=======First List======"<<endl;
 	cout<<left;
-	cout<<"=======Right List======"<<endl;
+	cout<<"\n=======Right List======"<<endl;
 	cout<<right;
 }
-
-
 ostream& operator<<(ostream& ost, StockDB& s)
 {
 	cout<<"Head: "<<s.head->stk<<endl;
