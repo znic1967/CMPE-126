@@ -6,27 +6,31 @@
 // Description : Lab 4
 //============================================================================
 #include <iostream>
+
+#include "Portfolio.h"
 #include "Stock.h"
-#include "StockDB.h"
 #include "StockNode.h"
 using namespace std;
 
 int main() {
-	StockDB db, db2;
+	Portfolio port;
 	StockNode* mid;
 	string file="stocks.txt";
 	cout<<"Loading data..."<<endl;
-	db.load(file); //Loads stocks from text file into linked list
+	port.load(file); //Loads stocks from text file into linked list
 	cout<<"\n=======Data Loaded======="<<endl;
-	cout<<db;
+	cout<<port;
+	port.store();
+	cout<<"Data stored..."<<endl;
+	cout<<"======Reverse Print======="<<endl;
 	cout<<"\nCalling function to find the middle of the linked list..."<<endl;
-	mid=db.returnMiddle(); //Returns a pointer to the middle element
+	//id=db.returnMiddle(); //Returns a pointer to the middle element
 	cout<<"Splitting list..."<<endl;
-	db2=db.split(db2,mid); //Set db2 to a list returned from split
+	//db2=db.split(db2,mid); //Set db2 to a list returned from split
 	cout<<"=======Left List======"<<endl;
-	cout<<db;
+	//cout<<db;
 	cout<<"\n=======Right List======"<<endl;
-	cout<<db2;
+	//cout<<db2;
 }
 
 //Console Output

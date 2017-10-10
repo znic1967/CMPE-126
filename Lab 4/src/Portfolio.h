@@ -5,29 +5,30 @@
 // Date        : 1 October 2017
 // Description : Lab 3
 //============================================================================
-#ifndef STOCKDB_H_
-#define STOCKDB_H_
+#ifndef Portfolio_H_
+#define Portfolio_H_
 
 #include "Stock.h"
 #include "StockNode.h"
 
-class StockDB
+class Portfolio
 {
 public:
-    StockDB();
+    Portfolio();
     void load(string);
-    void print_rev();
+    void store();
+    void reversePrint();
     StockNode* returnMiddle();
     void insert_back(StockNode *p);
-    StockDB split(StockDB db2, StockNode* middle);
+    Portfolio split(Portfolio db2, StockNode* middle);
     //Getters
     StockNode* getHead();
     StockNode* getTail();
     //Operators
-    friend ostream& operator<<(ostream& ost, StockDB& s);
+    friend ostream& operator<<(ostream& ost, Portfolio& s);
 private:
     StockNode* head;
     StockNode* tail;
     int length;
 };
-#endif /* STOCKDB_H_ */
+#endif /* Portfolio_H_ */

@@ -11,6 +11,7 @@
 StockNode::StockNode() {
 	stk=Stock();
 	next=NULL;
+	prev=NULL;
 }
 Stock StockNode::getStock()
 {
@@ -23,6 +24,14 @@ StockNode* StockNode::getNext()
 void StockNode::setNext(StockNode* n)
 {
 	next=n;
+}
+StockNode* StockNode::getPrev()
+{
+	return prev;
+}
+void StockNode::setPrev(StockNode* p)
+{
+	prev=p;
 }
 void StockNode::setStock(Stock s)
 {

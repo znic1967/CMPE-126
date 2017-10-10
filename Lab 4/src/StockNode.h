@@ -19,9 +19,11 @@ public:
 	//Getters
 	Stock getStock();
 	StockNode* getNext();
+	StockNode* getPrev();
 	//Setters
 	void setStock(Stock s);
 	void setNext(StockNode* n);
+	void setPrev(StockNode* p);
 private:
 	Stock stk;
 	StockNode* next;
