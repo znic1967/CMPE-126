@@ -2,8 +2,8 @@
 // Name        : Zack Nicholson
 // Professor   : Frank Lin
 // Class       : CMPE 126-05
-// Date        : 1 October 2017
-// Description : Lab 3
+// Date        : 12 October 2017
+// Description : Lab 4
 //============================================================================
 #include "Stock.h"
 #include "Portfolio.h"
@@ -111,7 +111,6 @@ Portfolio Portfolio::split(Portfolio db2, StockNode* middle)
 	tail->setNext(NULL);
 	return db2;
 }
-
 void Portfolio::insert_front(Stock s)
 {
 	StockNode* sp= new StockNode();
@@ -162,4 +161,3 @@ void Portfolio::reversePrint()
 		cout<<tmp;
 	}
 }
-

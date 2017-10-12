@@ -2,7 +2,7 @@
 // Name        : Zack Nicholson
 // Professor   : Frank Lin
 // Class       : CMPE 126-05
-// Date        : 9 October 2017
+// Date        : 12 October 2017
 // Description : Lab 4
 //============================================================================
 #include <iostream>
@@ -64,24 +64,83 @@ File closed.
 -HP	$34.00 /share	x88
 -MSI	$44.00 /share	x98
 -MK	$35.00 /share	x56
+Data stored...
 
-Calling function to find the middle of the linked list...
+======Reverse Print=======
+-MK	$35.00 /share	x56
+-MSI	$44.00 /share	x98
+-HP	$34.00 /share	x88
+-DL	$12.00 /share	x28
+-LX	$33.00 /share	x22
+-MS	$12.00 /share	x45
+-G	$40.00 /share	x10
+-AMZN	$20.00 /share	x30
+-APPL	$22.00 /share	x44
 
-Middle: -LX	$33.00 /share	x22
-Position: 4
-
-Splitting list...
-=======Left List======
+======Insert Front========
+Inserting stock: -FB	$44.00 /share	x78
+to front of list
+New List...
+-FB	$44.00 /share	x78
 -APPL	$22.00 /share	x44
 -AMZN	$20.00 /share	x30
 -G	$40.00 /share	x10
 -MS	$12.00 /share	x45
 -LX	$33.00 /share	x22
-
-=======Right List======
 -DL	$12.00 /share	x28
 -HP	$34.00 /share	x88
 -MSI	$44.00 /share	x98
 -MK	$35.00 /share	x56
 
+======Inserting Middle======
+Inserting stock: -EA	$47.00 /share	x22
+into middle of list
+
+Middle: -LX	$33.00 /share	x22
+Position: 5
+
+New List...
+-FB	$44.00 /share	x78
+-APPL	$22.00 /share	x44
+-AMZN	$20.00 /share	x30
+-G	$40.00 /share	x10
+-MS	$12.00 /share	x45
+-LX	$33.00 /share	x22
+-EA	$47.00 /share	x22
+-DL	$12.00 /share	x28
+-HP	$34.00 /share	x88
+-MSI	$44.00 /share	x98
+-MK	$35.00 /share	x56
+
+======Insert End======
+Inserting stock: -IO	$98.00 /share	x3
+to end of list
+New List...
+-FB	$44.00 /share	x78
+-APPL	$22.00 /share	x44
+-AMZN	$20.00 /share	x30
+-G	$40.00 /share	x10
+-MS	$12.00 /share	x45
+-LX	$33.00 /share	x22
+-EA	$47.00 /share	x22
+-DL	$12.00 /share	x28
+-HP	$34.00 /share	x88
+-MSI	$44.00 /share	x98
+-MK	$35.00 /share	x56
+-IO	$98.00 /share	x3
+
+======Reverse Print======
+-IO	$98.00 /share	x3
+-MK	$35.00 /share	x56
+-MSI	$44.00 /share	x98
+-HP	$34.00 /share	x88
+-DL	$12.00 /share	x28
+-EA	$47.00 /share	x22
+-LX	$33.00 /share	x22
+-MS	$12.00 /share	x45
+-G	$40.00 /share	x10
+-AMZN	$20.00 /share	x30
+-APPL	$22.00 /share	x44
+-FB	$44.00 /share	x78
+*/
  */

@@ -2,8 +2,8 @@
 // Name        : Zack Nicholson
 // Professor   : Frank Lin
 // Class       : CMPE 126-05
-// Date        : 1 October 2017
-// Description : Lab 3
+// Date        : 12 October 2017
+// Description : Lab 4
 //============================================================================
 #include "Stock.h"
 #include <iostream>
