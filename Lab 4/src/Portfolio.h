@@ -20,6 +20,9 @@ public:
     void reversePrint();
     StockNode* returnMiddle();
     void insert_back(StockNode *p);
+    void insert_front(Stock s);
+    void insert_end(Stock s);
+    void insert_middle(StockNode* mid, Stock s);
     Portfolio split(Portfolio db2, StockNode* middle);
     //Getters
     StockNode* getHead();

@@ -15,6 +15,10 @@ using namespace std;
 int main() {
 	Portfolio port;
 	StockNode* mid;
+	Stock temp;
+	Stock stk ("FB", 44,78);
+	Stock stk2 ("EA", 47,22);
+	Stock stk3 ("IO",98,3);
 	string file="stocks.txt";
 	cout<<"Loading data..."<<endl;
 	port.load(file); //Loads stocks from text file into linked list
@@ -22,15 +26,26 @@ int main() {
 	cout<<port;
 	port.store();
 	cout<<"Data stored..."<<endl;
-	cout<<"======Reverse Print======="<<endl;
-	cout<<"\nCalling function to find the middle of the linked list..."<<endl;
-	//id=db.returnMiddle(); //Returns a pointer to the middle element
-	cout<<"Splitting list..."<<endl;
-	//db2=db.split(db2,mid); //Set db2 to a list returned from split
-	cout<<"=======Left List======"<<endl;
-	//cout<<db;
-	cout<<"\n=======Right List======"<<endl;
-	//cout<<db2;
+	cout<<"\n======Reverse Print======="<<endl;
+	port.reversePrint();
+	cout<<"\n======Insert Front========"<<endl;
+	cout<<"Inserting stock: "<<stk<<"to front of list"<<endl;
+	port.insert_front(stk);
+	cout<<"New List..."<<endl;
+	cout<<port;
+	cout<<"\n======Inserting Middle======"<<endl;
+	cout<<"Inserting stock: "<<stk2<<"into middle of list"<<endl;
+	mid=port.returnMiddle();
+	port.insert_middle(mid,stk2);
+	cout<<"New List..."<<endl;
+	cout<<port;
+	cout<<"\n======Insert End======"<<endl;
+	cout<<"Inserting stock: "<<stk3<<"to end of list"<<endl;
+	port.insert_end(stk3);
+	cout<<"New List..."<<endl;
+	cout<<port;
+	cout<<"\n======Reverse Print======"<<endl;
+	port.reversePrint();
 }
 
 //Console Output

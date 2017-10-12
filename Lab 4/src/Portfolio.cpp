@@ -111,6 +111,39 @@ Portfolio Portfolio::split(Portfolio db2, StockNode* middle)
 	tail->setNext(NULL);
 	return db2;
 }
+
+void Portfolio::insert_front(Stock s)
+{
+	StockNode* sp= new StockNode();
+	sp->setStock(s);
+	sp->setNext(head);
+	head->setPrev(sp);
+	head=sp;
+	head->setPrev(NULL);
+	length++;
+}
+void Portfolio::insert_end(Stock s)
+{
+	StockNode* sp= new StockNode();
+	sp->setStock(s);
+	sp->setPrev(tail);
+	tail->setNext(sp);
+	tail=sp;
+	tail->setNext(NULL);
+	length++;
+}
+void Portfolio::insert_middle(StockNode* mid, Stock s)
+{
+	StockNode* sp=new StockNode();
+	StockNode* temp;
+	temp=mid->getNext();
+	sp->setStock(s);
+	mid->setNext(sp);
+	sp->setPrev(mid);
+	sp->setNext(temp);
+	temp->setPrev(sp);
+	length++;
+}
 ostream& operator<<(ostream& ost, Portfolio& s)
 {
 	for (StockNode* i=s.head; i!=NULL; i=i->getNext())
@@ -123,7 +156,7 @@ ostream& operator<<(ostream& ost, Portfolio& s)
 
 void Portfolio::reversePrint()
 {
-	for (StockNode* i=tail; i!=head; i=i->getPrev())
+	for (StockNode* i=tail; i!=NULL; i=i->getPrev()) //Null before head?
 	{
 		Stock tmp=i->getStock();
 		cout<<tmp;
