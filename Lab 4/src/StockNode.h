@@ -15,6 +15,7 @@ class StockNode
 {
 public:
 	StockNode();
+	StockNode(StockNode* node);
 	friend istream& operator>>(istream& in, StockNode& s);
 	//Getters
 	Stock getStock();

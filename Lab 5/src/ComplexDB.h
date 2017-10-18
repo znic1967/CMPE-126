@@ -13,11 +13,14 @@ public:
 	void load(string file);
 	void add();
 	void CDelete();
-	Complex largest(int i);
+	Complex largest(Complex num, int i);
 	//void print(int n);
 	//void printall();
 	friend ostream& operator <<(ostream& ost, const ComplexDB &c);
 	virtual ~ComplexDB();
+
+	//Getters
+	Complex* getData();
 private:
 	Complex *data;
 	int maxsize;

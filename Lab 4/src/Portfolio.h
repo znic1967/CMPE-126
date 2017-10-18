@@ -24,6 +24,8 @@ public:
     void insert_end(Stock s);
     void insert_middle(StockNode* mid, Stock s);
     Portfolio split(Portfolio db2, StockNode* middle);
+    void delete_front();
+    void delete_back();
 
     //Getters
     StockNode* getHead();

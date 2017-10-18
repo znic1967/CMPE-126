@@ -68,6 +68,22 @@ void Portfolio::store()
 			fout<<tmp;
 		}
 }
+void Portfolio::delete_front()
+{
+	StockNode* temp(head); //Store head in temp pointer.
+	head=temp->getNext();
+	head->setPrev(NULL);
+	temp->setNext(NULL);
+	delete temp;
+}
+void Portfolio::delete_back()
+{
+	StockNode* temp(tail);
+	tail=temp->getPrev();
+	tail->setNext(NULL);
+	temp->setPrev(NULL);
+	delete temp;
+}
 void Portfolio::insert_back(StockNode *p)
 {
 	if (length==0)

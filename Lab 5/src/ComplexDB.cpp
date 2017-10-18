@@ -23,7 +23,10 @@ ComplexDB::ComplexDB(int max){
 ComplexDB::~ComplexDB() {
 	delete [] data;
 }
-
+Complex* ComplexDB::getData()
+{
+	return data;
+}
 void ComplexDB::increase_size(int newMaxSize){
 	maxsize = newMaxSize;
 	Complex * temp = new Complex[maxsize];
@@ -74,19 +77,18 @@ void ComplexDB::load(string file)
 		}
 	}
 }
-Complex ComplexDB::largest(int i)
+Complex ComplexDB::largest(Complex num,int i)
 {
-	Complex max=data[0];
 	if (data[i]<data[i+1])
 	{
 		max=data[i+1];
 	}
 	if(i!=length)
 	{
-		largest(i+1); //If not reached end of array check next element
+		largest(max,i+1); //If not reached end of array check next element
 		cout<<"Element: "<<i;
 	}
-	else return max;
+	return max;
 }
 void ComplexDB::add(){
 	cout << "Enter Number: " << endl;

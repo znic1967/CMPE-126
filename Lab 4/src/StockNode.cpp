@@ -13,6 +13,12 @@ StockNode::StockNode() {
 	next=NULL;
 	prev=NULL;
 }
+StockNode::StockNode(StockNode* node)
+{
+	stk=node->getStock();
+	next=node->getNext();
+	prev=node->getPrev();
+}
 Stock StockNode::getStock()
 {
 	return stk;
