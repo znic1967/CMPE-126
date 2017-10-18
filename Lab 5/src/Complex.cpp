@@ -63,13 +63,7 @@ void Complex::operator =(Complex c)
 bool operator <(const Complex& a, const Complex& b){
 	float valA=sqrt(pow(a.real,2)+pow(a.imaginary,2));
 	float valB=sqrt(pow(b.real,2)+pow(b.imaginary,2));
-	if (valA<valB)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	if (valA<valB) return true;
+	else return false;
 }
 

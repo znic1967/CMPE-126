@@ -9,13 +9,17 @@
 #include <iostream>
 #include "Complex.h"
 #include "ComplexDB.h"
+#include "Stock.h"
+#include "StockDB.h"
+#include "StockNode.h"
 using namespace std;
 
 int main() {
 	string input_file="complex.txt";
 	ComplexDB db;
 	db.load(input_file);
-	Complex* max=db.getData();
-	max=db.largest(max,0);
+	Complex max=db.getData(0);
+	max=db.largest(max,1);
 	cout<<"Max: "<<max<<endl;
+
 }

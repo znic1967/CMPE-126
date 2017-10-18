@@ -23,9 +23,10 @@ ComplexDB::ComplexDB(int max){
 ComplexDB::~ComplexDB() {
 	delete [] data;
 }
-Complex* ComplexDB::getData()
+Complex ComplexDB::getData(int element)
 {
-	return data;
+	Complex temp=data[element];
+	return temp;
 }
 void ComplexDB::increase_size(int newMaxSize){
 	maxsize = newMaxSize;
@@ -72,21 +73,26 @@ void ComplexDB::load(string file)
 		{
 			data[length].setReal(real);
 			data[length].setImaginary(imaginary);
-			cout<<data[length]<<endl;
+			//cout<<data[length]<<endl;
 			length++;
 		}
 	}
 }
-Complex ComplexDB::largest(Complex num,int i)
+Complex ComplexDB::largest(Complex max,int i)
 {
+	cout<<"Max: "<<max<<"\tElement: "<<i<<endl;
+
 	if (data[i]<data[i+1])
 	{
 		max=data[i+1];
+		//cout<<"Here"<<endl;
 	}
 	if(i!=length)
 	{
+
 		largest(max,i+1); //If not reached end of array check next element
-		cout<<"Element: "<<i;
+		//cout<<"Element: "<<i;
+		//return max;
 	}
 	return max;
 }
