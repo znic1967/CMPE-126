@@ -2,8 +2,8 @@
 // Name        : Zack Nicholson
 // Professor   : Frank Lin
 // Class       : CMPE 126-05
-// Date        : 1 October 2017
-// Description : Lab 3
+// Date        : 22 October 2017
+// Description : Lab 5
 //============================================================================
 #ifndef STOCKDB_H_
 #define STOCKDB_H_
@@ -20,6 +20,7 @@ public:
     StockNode* returnMiddle();
     void insert_back(StockNode *p);
     StockDB split(StockDB db2, StockNode* middle);
+    void reversePrint(StockNode* stk);
     //Getters
     StockNode* getHead();
     StockNode* getTail();

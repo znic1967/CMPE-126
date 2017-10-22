@@ -1,3 +1,10 @@
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 22 October 2017
+// Description : Lab 5
+//============================================================================
 #include "Complex.h"
 #include "ComplexDB.h"
 #include <iostream>
@@ -10,17 +17,20 @@
 #include <sstream>
 using namespace std;
 
-ComplexDB::ComplexDB(){
+ComplexDB::ComplexDB()
+{
 	maxsize = 20;
 	length = 0;
 	data = new Complex [maxsize];
 }
-ComplexDB::ComplexDB(int max){
+ComplexDB::ComplexDB(int max)
+{
 	maxsize = max;
 	length = -1; //iterator in load function sets it to one on first loop.
 	data = new Complex [maxsize];
 }
-ComplexDB::~ComplexDB() {
+ComplexDB::~ComplexDB()
+{
 	delete [] data;
 }
 Complex ComplexDB::getData(int element)
@@ -32,26 +42,29 @@ int ComplexDB::getLength()
 {
 	return length;
 }
-void ComplexDB::increase_size(int newMaxSize){
+ostream& operator <<(ostream& ost, const ComplexDB &c)
+{
+	for (int i=0;i<c.length;i++)
+		{
+			ost<<c.data[i]<<" ";
+		}
+	return ost;
+}
+void ComplexDB::increase_size(int newMaxSize)
+{
 	maxsize = newMaxSize;
 	Complex * temp = new Complex[maxsize];
 
 	for(int i = 0; i < length; i++){
 		temp[i] = data[i];
 	}
-
 	delete [] data;
-
 	Complex* data = new Complex[maxsize];
-
 	for(int i = 0; i < length; i++){
 		data[i] = temp[i];
 	}
-
 	delete [] temp;
-
 }
-
 void ComplexDB::load(string file)
 {
 	ifstream fin;
@@ -69,22 +82,19 @@ void ComplexDB::load(string file)
 	float imaginary;
 	char i;
 	char plus;
-
 	while (!fin.eof())
 	{	real=0; imaginary=0;
-		fin>>real>>plus>>imaginary>>i; //real and i placeholders. Throw out values.
+		fin>>real>>plus>>imaginary>>i; //plus and i place holders. Throw out values.
 		if (real!=0)
 		{
 			data[length].setReal(real);
 			data[length].setImaginary(imaginary);
-			//cout<<data[length]<<endl;
 			length++;
 		}
 	}
 }
 Complex ComplexDB::largest(int lowest, int highest, Complex max)
 {
-	//cout<<"Largest of "<<lowest<<" & "<<highest<<endl;
 	if (lowest==highest) //base case
 	{
 		return max;
@@ -95,18 +105,6 @@ Complex ComplexDB::largest(int lowest, int highest, Complex max)
 		{
 			max=data[lowest];
 		}
-		//cout<<"Max: "<<max<<endl;
 		return largest(lowest+1,highest,max);
 	}
 }
-
-ostream& operator <<(ostream& ost, const ComplexDB &c)
-{
-	for (int i=0;i<c.length;i++)
-		{
-			ost<<c.data[i]<<" ";
-		}
-	return ost;
-}
-
-

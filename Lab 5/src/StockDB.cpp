@@ -2,8 +2,8 @@
 // Name        : Zack Nicholson
 // Professor   : Frank Lin
 // Class       : CMPE 126-05
-// Date        : 1 October 2017
-// Description : Lab 3
+// Date        : 22 October 2017
+// Description : Lab 5
 //============================================================================
 #include "Stock.h"
 #include "StockDB.h"
@@ -25,6 +25,15 @@ StockNode* StockDB::getHead()
 StockNode* StockDB::getTail()
 {
 	return tail;
+}
+ostream& operator<<(ostream& ost, StockDB& s)
+{
+	for (StockNode* i=s.head; i!=NULL; i=i->getNext())
+	{
+		Stock tmp=i->getStock();
+		cout<<tmp;
+	}
+	return ost;
 }
 void StockDB::load(string file)
 {
@@ -61,39 +70,10 @@ void StockDB::insert_back(StockNode *p)
 	tail=p;
 	length++;
 }
-StockNode* StockDB::returnMiddle()
+void StockDB::reversePrint(StockNode* head)
 {
-	int middle=length/2;
-	int counter=0;
-	StockNode* mid;
-	for (StockNode* i=head; i->getNext()!=NULL; i=i->getNext())
-		{
-			if (counter==middle)
-			{
-				mid=i;
-			}
-			counter++;
-		}
-	Stock tmp=mid->getStock();
-	cout<<"\nMiddle: "<<tmp;
-	cout<<"Position: "<<middle<<endl; cout<<endl;
-	return mid; //Returns a node pointer to the middle address
-}
-StockDB StockDB::split(StockDB db2, StockNode* middle)
-{
-	db2.head=middle->getNext();
-	db2.tail=tail;
-	db2.length=length/2;
-	tail=middle;
-	tail->setNext(NULL);
-	return db2;
-}
-ostream& operator<<(ostream& ost, StockDB& s)
-{
-	for (StockNode* i=s.head; i!=NULL; i=i->getNext())
-	{
-		Stock tmp=i->getStock();
-		cout<<tmp;
-	}
-	return ost;
+	if (head==NULL) return;
+	reversePrint(head->getNext());
+	Stock temp=head->getStock();
+	cout<<temp;
 }
