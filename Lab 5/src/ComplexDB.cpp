@@ -82,12 +82,11 @@ void ComplexDB::load(string file)
 		}
 	}
 }
-Complex ComplexDB::largest(int lowest, int highest)
+Complex ComplexDB::largest(int lowest, int highest, Complex max)
 {
-	Complex max;
-	if (lowest==highest)
+	//cout<<"Largest of "<<lowest<<" & "<<highest<<endl;
+	if (lowest==highest) //base case
 	{
-		max=data[lowest];
 		return max;
 	}
 	else //(lowest<highest)
@@ -95,8 +94,9 @@ Complex ComplexDB::largest(int lowest, int highest)
 		if(max<data[lowest])
 		{
 			max=data[lowest];
-			largest(lowest+1);
 		}
+		//cout<<"Max: "<<max<<endl;
+		return largest(lowest+1,highest,max);
 	}
 }
 

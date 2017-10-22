@@ -13,7 +13,7 @@ public:
 	void load(string file);
 	void add();
 	void CDelete();
-	Complex largest(int lowest, int highest);
+	Complex largest(int lowest, int highest, Complex max);
 	//void print(int n);
 	//void printall();
 	friend ostream& operator <<(ostream& ost, const ComplexDB &c);

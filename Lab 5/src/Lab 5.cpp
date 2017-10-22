@@ -17,9 +17,9 @@ using namespace std;
 int main() {
 	string input_file="complex.txt";
 	ComplexDB db;
-	db.load(input_file);
 	Complex max=db.getData(0);
-	max=db.largest(0,db.getLength());
+	db.load(input_file);
+	max=db.largest(0,db.getLength(),max);
 	cout<<"Max: "<<max<<endl;
 
 }
