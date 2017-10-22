@@ -19,7 +19,7 @@ int main() {
 	ComplexDB db;
 	db.load(input_file);
 	Complex max=db.getData(0);
-	max=db.largest(max,1);
+	max=db.largest(0,db.getLength());
 	cout<<"Max: "<<max<<endl;
 
 }

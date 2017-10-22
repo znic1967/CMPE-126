@@ -13,7 +13,7 @@ public:
 	void load(string file);
 	void add();
 	void CDelete();
-	Complex largest(Complex max, int i);
+	Complex largest(int lowest, int highest);
 	//void print(int n);
 	//void printall();
 	friend ostream& operator <<(ostream& ost, const ComplexDB &c);
@@ -21,6 +21,7 @@ public:
 
 	//Getters
 	Complex getData(int element);
+	int getLength();
 private:
 	Complex *data;
 	int maxsize;

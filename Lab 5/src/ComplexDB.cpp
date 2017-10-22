@@ -28,6 +28,10 @@ Complex ComplexDB::getData(int element)
 	Complex temp=data[element];
 	return temp;
 }
+int ComplexDB::getLength()
+{
+	return length;
+}
 void ComplexDB::increase_size(int newMaxSize){
 	maxsize = newMaxSize;
 	Complex * temp = new Complex[maxsize];
@@ -78,122 +82,21 @@ void ComplexDB::load(string file)
 		}
 	}
 }
-Complex ComplexDB::largest(Complex max,int i)
+Complex ComplexDB::largest(int lowest, int highest)
 {
-	cout<<"Max: "<<max<<"\tElement: "<<i<<endl;
-
-	if (data[i]<data[i+1])
+	Complex max;
+	if (lowest==highest)
 	{
-		max=data[i+1];
-		//cout<<"Here"<<endl;
+		max=data[lowest];
+		return max;
 	}
-	if(i!=length)
+	else //(lowest<highest)
 	{
-
-		largest(max,i+1); //If not reached end of array check next element
-		//cout<<"Element: "<<i;
-		//return max;
-	}
-	return max;
-}
-void ComplexDB::add(){
-	cout << "Enter Number: " << endl;
-	char temp;
-	float sign = 1;
-	float ntemp = 1;
-	float real = 0;
-	float imag = 0;
-	bool status = true;
-	string line;
-
-	if(length + 1 >= maxsize)
-	{
-		maxsize++;
-		increase_size(maxsize);
-	}
-
-	while (status) {
-
-		temp = cin.peek();
-		if (temp == '+')
+		if(max<data[lowest])
 		{
-			cin.ignore();
-			temp = cin.peek();
+			max=data[lowest];
+			largest(lowest+1);
 		}
-		else if (temp == '-')
-		{
-			cin.ignore();
-			sign = -1.0;
-			temp = cin.peek();
-		}
-		else if (isdigit(temp))
-		{
-			cin >> ntemp;
-			temp = cin.peek();
-			if (temp == '+' || temp == '-' || temp == '\n')
-			{
-				real = ntemp * sign;
-				ntemp = 1;
-				sign = 1;
-			}
-			else if (temp == 'i')
-			{
-				cin.ignore();
-				imag = ntemp * sign;
-				ntemp = 1;
-				sign = 1;
-			}
-		}
-		else
-		{
-			temp = cin.peek();
-			getline(cin, line);
-			if(temp == '\n')
-			{
-				data[length].setReal(real);
-				data[length].setImaginary(imag);
-				length++;
-				status = false;
-			}
-			real = 0;
-			imag = 0;
-		}
-	}
-
-}
-void ComplexDB::CDelete(){
-	int index = 0;
-	cout << "Enter the number to delete." << endl;
-	for(int i = 0; i < length; i++){
-		cout << i+1 << ": " << data[i] << endl;
-	}
-	cin >> index;
-
-	index--;
-	if(length == 0 || index < 0 || index >= length){
-		cout << "Number could not be found. Please enter a different number" << endl;
-	}
-	else{
-		for (int i = index; i < length - 1; i++) {
-			data[i] = data[i+1];
-		}
-		length--;
-	}
-}
-void ComplexDB::sort_items(){
-	Complex temp;
-	int smallest_index = 0;
-
-	for(int i = 0; i < length - 1; i++){
-		smallest_index = i;
-		for(int j = i + 1; j < length; j++){
-			if(data[j] < data[smallest_index]){
-				smallest_index = j;
-			}
-		}
-	temp = data[i];
-	data[i] = data[smallest_index];
-	data[smallest_index] = temp;
 	}
 }
 
