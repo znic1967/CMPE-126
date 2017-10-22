@@ -10,12 +10,14 @@
 #include <fstream>
 using namespace std;
 
-Stock::Stock() {
+Stock::Stock()
+{
 	symbol="$";
 	cost=0;
 	shares=0;
 }
-Stock::Stock(string s, int c,int sh){
+Stock::Stock(string s, int c,int sh)
+{
 	symbol=s;
 	cost=c;
 	shares=sh;

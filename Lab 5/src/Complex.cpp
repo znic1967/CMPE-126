@@ -2,10 +2,9 @@
 // Name        : Zack Nicholson
 // Professor   : Frank Lin
 // Class       : CMPE 126-05
-// Date        : 7 September 2017
-// Description : Lab 1
+// Date        : 22 October 2017
+// Description : Lab 5
 //============================================================================
-//TEST
 #include "Complex.h"
 #include <iostream>
 #include <fstream>
@@ -16,7 +15,6 @@ Complex::Complex() {
 	real=0;
 	imaginary=0;
 }
-
 Complex::Complex(float r, float i){
 	real=r;
 	imaginary=i;
@@ -40,7 +38,6 @@ Complex operator +(const Complex& coma, const Complex& comb)
 	result.imaginary=coma.imaginary+comb.imaginary;
 	return result;
 }
-
 ostream& operator <<(ostream& ost, const Complex &c)
 {
 	if (c.imaginary<0) //If the imaginary number is negative no + is needed in formatting.
@@ -53,7 +50,6 @@ ostream& operator <<(ostream& ost, const Complex &c)
 	}
 	return ost;
 }
-
 void Complex::operator =(Complex c)
 {
 	real=c.getReal();

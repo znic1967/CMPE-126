@@ -16,19 +16,23 @@ using namespace std;
 int main() {
 
 	//Part 1
+	cout<<">>Part 1: Complex Numbers..."<<endl;
 	string input_file="complex.txt";
 	ComplexDB cDB;
 	Complex max=cDB.getData(0);
 	cDB.load(input_file);
+	cout<<"==========Data Loaded=========="<<endl;
+	cout<<cDB;
 	max=cDB.largest(0,cDB.getLength(),max);
-	cout<<"Max: "<<max<<endl;
+	cout<<"\nMax: "<<max<<endl;
 
 	//Part 2
+	cout<<"\n>>Part 2: Reverse Print a Forward Linked List..."<<endl;
 	string input_file2="stocks.txt";
 	StockDB stkDB;
 	stkDB.load(input_file2);
 	cout<<"==========Data Loaded=========="<<endl;
 	cout<<stkDB;
-	cout<<"Reverse print of forward linked list..."<<endl;
+	cout<<"\nReverse print..."<<endl;
 	stkDB.reversePrint(stkDB.getHead());
 }

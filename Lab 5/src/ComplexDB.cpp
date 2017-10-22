@@ -46,7 +46,7 @@ ostream& operator <<(ostream& ost, const ComplexDB &c)
 {
 	for (int i=0;i<c.length;i++)
 		{
-			ost<<c.data[i]<<" ";
+			ost<<c.data[i]<<endl;
 		}
 	return ost;
 }
@@ -75,7 +75,7 @@ void ComplexDB::load(string file)
 	}
 	else
 	{
-		cout<<"File opened successfully!"<<endl;
+		cout<<"File opened."<<endl;
 	}
 	string line;
 	float real;
@@ -92,6 +92,8 @@ void ComplexDB::load(string file)
 			length++;
 		}
 	}
+	fin.close();
+	cout<<"File closed."<<endl;
 }
 Complex ComplexDB::largest(int lowest, int highest, Complex max)
 {

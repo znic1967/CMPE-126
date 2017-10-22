@@ -15,17 +15,20 @@ class StockDB
 {
 public:
     StockDB();
+
+    //Getters
+    StockNode* getHead();
+    StockNode* getTail();
+
+    //Overloaded Operators
+    friend ostream& operator<<(ostream& ost, StockDB& s);
+
     void load(string);
     void print_rev();
     StockNode* returnMiddle();
     void insert_back(StockNode *p);
     StockDB split(StockDB db2, StockNode* middle);
     void reversePrint(StockNode* stk);
-    //Getters
-    StockNode* getHead();
-    StockNode* getTail();
-    //Operators
-    friend ostream& operator<<(ostream& ost, StockDB& s);
 private:
     StockNode* head;
     StockNode* tail;
