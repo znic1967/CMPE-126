@@ -20,7 +20,7 @@ public:
 
 	void load(string input);
 	void insert_back(int n);
-	void split(IntegerDB one, IntegerDB two, int d);
+	void split(IntegerDB &one, IntegerDB &two, int d);
 private:
 	Node* head;
 	Node* tail;

@@ -17,9 +17,9 @@ IntegerDB db, db1, db2;
 db.load("int_list.txt");
 cout<<"Data Loaded..."<<endl;
 cout<<db;
-db.split(db1,db2,80);
-cout<<"Less than 80..."<<endl;
+db.split(db1,db2,60);
+cout<<"Less than 60..."<<endl;
 cout<<db1;
-cout<<"Greater than 80..."<<endl;
+cout<<"Greater than 60..."<<endl;
 cout<<db2;
 }

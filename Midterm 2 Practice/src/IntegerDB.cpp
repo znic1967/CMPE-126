@@ -61,7 +61,7 @@ void IntegerDB::insert_back(int n)
 	length++;
 }
 
-void IntegerDB::split(IntegerDB one, IntegerDB two, int cmp)
+void IntegerDB::split(IntegerDB &one, IntegerDB &two, int cmp)
 {
 	for (Node* i=head; i!=NULL; i=i->getNext()){
 		int temp=i->getNum();
