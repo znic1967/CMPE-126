@@ -15,12 +15,16 @@ class IntegerDB {
 public:
 	IntegerDB();
 
+	//Getters
+	Node* getHead();
 	//Overloaded Operators
 	friend ostream& operator<<(ostream& ost, IntegerDB& s);
 
 	void load(string input);
 	void insert_back(int n);
-	void split(IntegerDB &one, IntegerDB &two, int d);
+	void split(IntegerDB &one, IntegerDB &two, int cmp);
+	void insert(Node n,int x);
+	void delete_list(Node* current);
 private:
 	Node* head;
 	Node* tail;

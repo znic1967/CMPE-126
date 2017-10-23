@@ -11,15 +11,46 @@
 #include "IntegerDB.h"
 using namespace std;
 
-int main() {
-string input="int_list.txt";
-IntegerDB db, db1, db2;
-db.load("int_list.txt");
-cout<<"Data Loaded..."<<endl;
-cout<<db;
-db.split(db1,db2,60);
-cout<<"Less than 60..."<<endl;
-cout<<db1;
-cout<<"Greater than 60..."<<endl;
-cout<<db2;
+void three();
+void four();
+void six();
+int main()
+{
+	six();
+}
+
+void three(IntegerDB db)
+{
+	IntegerDB db1, db2;
+	db.split(db1,db2,60);
+	cout<<"Less than 60..."<<endl;
+	cout<<db1;
+	cout<<"Greater than 60..."<<endl;
+	cout<<db2;
+}
+void four(IntegerDB db)
+{
+	Node n;
+	n.setNum(58);
+	db.load("int_list.txt");
+	cout<<"Data Loaded..."<<endl;
+	cout<<db;
+	db.insert(n,4);
+	cout<<"58 inserted..."<<endl;
+	cout<<db;
+}
+
+void six()
+{
+	IntegerDB db;
+	string input="int_list.txt";
+	db.load("int_list.txt");
+	cout<<"Data Loaded..."<<endl;
+	cout<<db;
+	db.delete_list(db.getHead());
+
+	if(db.getHead()==NULL)
+	{
+		cout<<"List Cleared"<<endl;
+	}
 }
