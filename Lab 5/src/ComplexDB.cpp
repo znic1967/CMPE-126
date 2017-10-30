@@ -55,12 +55,14 @@ void ComplexDB::increase_size(int newMaxSize)
 	maxsize = newMaxSize;
 	Complex * temp = new Complex[maxsize];
 
-	for(int i = 0; i < length; i++){
+	for(int i = 0; i < length; i++)
+	{
 		temp[i] = data[i];
 	}
 	delete [] data;
 	Complex* data = new Complex[maxsize];
-	for(int i = 0; i < length; i++){
+	for(int i = 0; i < length; i++)
+	{
 		data[i] = temp[i];
 	}
 	delete [] temp;

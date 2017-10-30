@@ -8,7 +8,8 @@
 #include "StockNode.h"
 #include "Stock.h"
 
-StockNode::StockNode() {
+StockNode::StockNode()
+{
 	stk=Stock();
 	next=NULL;
 }
@@ -28,7 +29,8 @@ void StockNode::setStock(Stock s)
 {
 	stk=s;
 }
-istream& operator>>(istream& in, StockNode& s){
+istream& operator>>(istream& in, StockNode& s)
+{
 	Stock tmp;
 	string sym;
 	int cost=0;
