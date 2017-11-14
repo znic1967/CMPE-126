@@ -16,7 +16,7 @@ public:
 	~StackAry();
 	void push(char item);
 	char pop();
-
+	bool isEmpty();
 	//Getters
 	char getItem(int i);
 	int getTop();

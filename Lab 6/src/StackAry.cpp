@@ -35,3 +35,8 @@ char StackAry::pop()
 {
 	return list[--top];
 }
+bool StackAry::isEmpty()
+{
+	if (top>0) return false;
+	else return true;
+}
