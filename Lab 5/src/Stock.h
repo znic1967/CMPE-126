@@ -12,7 +12,8 @@
 #include <fstream>
 using namespace std;
 
-class Stock {
+class Stock
+{
 public:
 	Stock();
 	Stock(string s, int c,int sh);

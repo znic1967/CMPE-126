@@ -46,15 +46,18 @@ void Stock::setShares(int s)
 {
 	shares=s;
 }
-void Stock::operator=(const Stock& s){
+void Stock::operator=(const Stock& s)
+{
 	symbol=s.symbol;
 	cost=s.cost;
 	shares=s.shares;
 }
-bool operator <(const Stock& s1, const Stock& s2){
+bool operator <(const Stock& s1, const Stock& s2)
+{
 	return (s1.cost<s2.cost);
 }
-ostream& operator<<(ostream& ost, Stock& s){
+ostream& operator<<(ostream& ost, Stock& s)
+{
 	ost<<"-"<<s.getSymbol();
 	ost<<"\t$"<<s.getCost();
 	ost<<".00 /share"<<"\tx"<<s.getShares();

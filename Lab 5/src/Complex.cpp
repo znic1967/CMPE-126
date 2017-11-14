@@ -11,24 +11,30 @@
 #include <cmath>
 using namespace std;
 
-Complex::Complex() {
+Complex::Complex()
+{
 	real=0;
 	imaginary=0;
 }
-Complex::Complex(float r, float i){
+Complex::Complex(float r, float i)
+{
 	real=r;
 	imaginary=i;
 }
-float Complex::getReal(){
+float Complex::getReal()
+{
 	return real;
 }
-float Complex::getImaginary(){
+float Complex::getImaginary()
+{
 	return imaginary;
 }
-void Complex::setReal(int a){
+void Complex::setReal(int a)
+{
 	real = a;
 }
-void Complex::setImaginary(int a){
+void Complex::setImaginary(int a)
+{
 	imaginary = a;
 }
 Complex operator +(const Complex& coma, const Complex& comb)
@@ -56,7 +62,8 @@ void Complex::operator =(Complex c)
 	imaginary=c.getImaginary();
 
 }
-bool operator <(const Complex& a, const Complex& b){
+bool operator <(const Complex& a, const Complex& b)
+{
 	float valA=sqrt(pow(a.real,2)+pow(a.imaginary,2));
 	float valB=sqrt(pow(b.real,2)+pow(b.imaginary,2));
 	if (valA<valB) return true;
