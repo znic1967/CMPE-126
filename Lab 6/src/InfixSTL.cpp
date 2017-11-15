@@ -5,34 +5,29 @@
 // Date        : 15 November 2017
 // Description : Lab 6
 //============================================================================
-#include "Infix.h"
-#include "StackAry.h"
+#include "InfixSTL.h"
+#include <stack>
 #include <iostream>
 #include <fstream>
 using namespace std;
 
-Infix::Infix()
+InfixSTL::InfixSTL()
 {
 	infx_expr="";
 	pfx_expr="";
-	StackAry temp(20);
-	op_stk=temp;
+	stack_init();
 }
-void Infix::setInfix(string s)
+void InfixSTL::setInfix(string s)
 {
 	infx_expr=s;
 }
-string Infix::get_postfix()
+string InfixSTL::get_postfix()
 {
 	return pfx_expr;
 }
-StackAry Infix::get_stack()
+void InfixSTL::convertToPostfix(string s)
 {
-	return op_stk;
-}
-void Infix::convertToPostfix(string s)
-{
-	Infix();
+	InfixSTL();
 	pfx_expr="";
 	infx_expr=s;
 	char sym='\0';
@@ -44,34 +39,33 @@ void Infix::convertToPostfix(string s)
 		{
 			pfx_expr+=sym;
 		}
-		else if (sym=='(') op_stk.push(sym); //b2
+		else if (sym=='(') op_stk_stl.push(sym); //b2
 		else if (sym==')') //b3
 		{
-			while(op_stk.getTop()!='(')
+			while(op_stk_stl.top()!='(')
 			{
-				pfx_expr+=op_stk.getTop();  //pops the symbol and appends it to postfix
-				op_stk.pop();
+				pfx_expr+=op_stk_stl.top();  //pops the symbol and appends it to postfix
+				op_stk_stl.pop();
 			}
-			op_stk.pop(); //pops out remaining '('
+			op_stk_stl.pop(); //pops out remaining '('
 		}
 		else if (isOperator(sym))
 		{
-			while (!op_stk.isEmpty() && op_stk.getTop()!='(' && precedence(op_stk.getTop(), sym))
+			while (!op_stk_stl.empty() && op_stk_stl.top()!='(' && precedence(op_stk_stl.top(), sym))
 			{
-				pfx_expr+=op_stk.getTop();
-				op_stk.pop();
+				pfx_expr+=op_stk_stl.top();
+				op_stk_stl.pop();
 			}
-			op_stk.push(sym);
+			op_stk_stl.push(sym);
 		}
 	}
-	while (!op_stk.isEmpty())
+	while (!op_stk_stl.empty())
 	{
-		pfx_expr+=op_stk.getTop();
-		op_stk.pop();
+		pfx_expr+=op_stk_stl.top();
+		op_stk_stl.pop();
 	}
 }
-
-bool Infix::precedence(char opr1, char opr2)
+bool InfixSTL::precedence(char opr1, char opr2)
 {
 	// If opr1 has equal or higher precedence than opr2 fxn will return true
 	int prec1, prec2;
@@ -93,7 +87,7 @@ bool Infix::precedence(char opr1, char opr2)
 	}
 	return (prec1 >= prec2);
 }
-bool Infix::isOperator(const char opr)
+bool InfixSTL::isOperator(const char opr)
 {
 	switch (opr)
 	{
@@ -112,4 +106,7 @@ bool Infix::isOperator(const char opr)
 	}
 }
 
-
+void InfixSTL::stack_init()
+{
+	while (!op_stk_stl.empty()) op_stk_stl.pop();
+}
