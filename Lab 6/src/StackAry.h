@@ -1,10 +1,10 @@
-/*
- * StackAry.h
- *
- *  Created on: Oct 22, 2017
- *      Author: Lt_Ballzacki
- */
-
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 15 November 2017
+// Description : Lab 6
+//============================================================================
 #ifndef STACKARY_H_
 #define STACKARY_H_
 #include <iostream>
@@ -17,9 +17,11 @@ public:
 	void push(char item);
 	char pop();
 	bool isEmpty();
+	void print();
+
 	//Getters
 	char getItem(int i);
-	int getTop();
+	char getTop();
 private:
 	int size;
 	int top;
