@@ -7,9 +7,12 @@
 
 #ifndef NODE_H_
 #define NODE_H_
-
+#include <iostream>
+#include <fstream>
+using namespace std;
 class Node {
 public:
+	friend ostream& operator<<(ostream& ost, Node p);
 	Node();
 
 	//Getters

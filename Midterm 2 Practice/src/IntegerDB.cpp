@@ -103,4 +103,15 @@ void IntegerDB::delete_list(Node *current)
 	}
 	head=NULL;
 }
+void IntegerDB::reverse_print()
+{
+	rec_reverse_print(head);
+}
+
+void IntegerDB::rec_reverse_print(Node* p)
+{
+	if(head==NULL) return;
+	rec_reverse_print(p->getNext());
+	cout<<*p;
+}
 

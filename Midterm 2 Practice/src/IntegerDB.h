@@ -25,6 +25,9 @@ public:
 	void split(IntegerDB &one, IntegerDB &two, int cmp);
 	void insert(Node n,int x);
 	void delete_list(Node* current);
+	void reverse_print();
+	void rec_reverse_print(Node* p);
+
 private:
 	Node* head;
 	Node* tail;

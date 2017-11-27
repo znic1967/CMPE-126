@@ -14,11 +14,17 @@ using namespace std;
 void three();
 void four();
 void six();
+void seven();
+void eight();
 int fib(int n);
+void TowerOfHanoi ( int NumberOfDisc,  char Source='A', char Destination='B',  char Temp='C');
 int main()
 {
 	//six();
-	cout<<fib(7);
+	//cout<<fib(7);
+	//seven();
+	TowerOfHanoi(3);
+	eight();
 }
 
 void three(IntegerDB db)
@@ -63,4 +69,29 @@ int fib(int n){
 	{
 		return (fib(n-1)+fib(n-2));
 	}
+}
+
+void seven()
+{
+	IntegerDB db;
+	string input="int_list.txt";
+	db.load("int_list.txt");
+	cout<<"Data Loaded..."<<endl;
+	cout<<db;
+	cout<<"Reverse print"<<endl;
+	db.reverse_print();
+}
+
+void TowerOfHanoi ( int NumberOfDisc,  char From, char To,  char Temp) {
+	cout << "ToH from " << From << " to " << To << " using " << Temp << endl;
+	if (NumberOfDisc == 0) return;
+	TowerOfHanoi( NumberOfDisc-1, From, Temp, To);
+	cout << "move " << NumberOfDisc << "th from " << From << " to " << To << endl;
+	TowerOfHanoi( NumberOfDisc-1, Temp, To, From);
+}
+
+void eight()
+{
+	int a[5]={10,20,30,40,50};
+	//cout<<a++;
 }
