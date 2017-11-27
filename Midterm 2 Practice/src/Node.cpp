@@ -7,6 +7,7 @@
 
 #include "Node.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 Node::Node()
@@ -31,4 +32,10 @@ void Node::setNum(int n)
 void Node::setNext(Node* p)
 {
 	next=p;
+}
+
+ostream& operator<<(ostream& ost, Node p)
+{
+	ost<<p.num;
+	return ost;
 }
