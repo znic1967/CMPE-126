@@ -52,3 +52,29 @@ int main() {
 		else cout<<"No"<<endl;
 	}
 }
+
+//Console Output
+/*
+Current Line: Anna
+Yes
+Current Line: Racecar
+Yes
+Current Line: Sentences
+No
+Current Line: Anne, I  vote more cars race Rome to Vienna.
+Yes
+Current Line: Are Mac ‘n’ Oliver ever evil on camera?
+Yes
+Current Line: Are we not drawn onward to new era?
+Yes
+Current Line: Are we not drawn onward, we few, drawn onward to new era?
+Yes
+Current Line: Are we not pure? “No sir!” Panama’s moody Noriega brags. “It is garbage!”
+No
+Current Line: Irony dooms a man; a prisoner up to new era.
+No
+Current Line: Art, name no tub time. Emit but one mantra.
+Yes
+Current Line: A  man, a plan, a canal: Panama!
+Yes
+ */
