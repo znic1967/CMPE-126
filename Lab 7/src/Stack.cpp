@@ -1,19 +1,24 @@
-/*
- * Stack.cpp
- *
- *  Created on: Nov 15, 2017
- *      Author: Nicholson
- */
-
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 29 November 2017
+// Description : Lab 7
+//============================================================================
 #include "Stack.h"
-
-Stack::Stack() {
-	// TODO Auto-generated constructor stub
-
+#include <iostream>
+using namespace std;
+Stack::Stack(int max)
+{
+	size=max;
+	top=0;
+	list=new char(max);
 }
 
-Stack::~Stack() {
-	// TODO Auto-generated destructor stub
+Stack::~Stack()
+{
+	top=0;
+	delete [] list;
 }
 
 void Stack::push(char item)
@@ -27,4 +32,23 @@ char Stack::pop()
 int Stack::getTopIndex()
 {
 	return top;
+}
+bool Stack::isEmpty()
+{
+	if (top>0) return false;
+	else return true;
+}
+void Stack::print()
+{
+	while(!isEmpty())
+	{
+		cout<<pop()<<" ";
+	}
+}
+void Stack::clear()
+{
+	while(!isEmpty())
+		{
+			pop();
+		}
 }
