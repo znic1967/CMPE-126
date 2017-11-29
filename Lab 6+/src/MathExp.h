@@ -5,16 +5,17 @@
 // Date        : 15 November 2017
 // Description : Lab 6
 //============================================================================
-#ifndef INFIX_H_
-#define INFIX_H_
+#ifndef MATHEXP_H_
+#define MATHEXP_H_
 #include <iostream>
 #include "StackAry.h"
 using namespace std;
 
-class Infix {
+class MathExp {
 public:
-	Infix();
+	MathExp();
 	void convertToPostfix(string s);
+	void eval (string s);
 
 	//Setters
 	void setInfix(string s);
@@ -33,4 +34,4 @@ private:
 
 };
 
-#endif /* INFIX_H_ */
+#endif /* MATHEXP_H_ */

@@ -5,34 +5,34 @@
 // Date        : 15 November 2017
 // Description : Lab 6
 //============================================================================
-#include "Infix.h"
+#include "MathExp.h"
 #include "StackAry.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
 
-Infix::Infix()
+MathExp::MathExp()
 {
 	infx_expr="";
 	pfx_expr="";
 	StackAry temp(20);
 	op_stk=temp;
 }
-void Infix::setInfix(string s)
+void MathExp::setInfix(string s)
 {
 	infx_expr=s;
 }
-string Infix::get_postfix()
+string MathExp::get_postfix()
 {
 	return pfx_expr;
 }
-StackAry Infix::get_stack()
+StackAry MathExp::get_stack()
 {
 	return op_stk;
 }
-void Infix::convertToPostfix(string s)
+void MathExp::convertToPostfix(string s)
 {
-	Infix();
+	MathExp();
 	pfx_expr="";
 	infx_expr=s;
 	char sym='\0';
@@ -71,7 +71,47 @@ void Infix::convertToPostfix(string s)
 	}
 }
 
-bool Infix::precedence(char opr1, char opr2)
+void MathExp::eval(string pfx)
+{
+	pfx_expr=pfx;
+	char sym='/0';
+	for(unsigned int i=0;i<pfx_expr.size();i++)
+		{
+			sym=infx_expr[i];
+
+			if (isalpha(sym)) //b1
+			{
+				pfx_expr+=sym;
+			}
+			else if (sym=='(') op_stk.push(sym); //b2
+			else if (sym==')') //b3
+			{
+				while(op_stk.getTop()!='(')
+				{
+					pfx_expr+=op_stk.getTop();  //pops the symbol and appends it to postfix
+					op_stk.pop();
+				}
+				op_stk.pop(); //pops out remaining '('
+			}
+			else if (isOperator(sym))
+			{
+				while (!op_stk.isEmpty() && op_stk.getTop()!='(' && precedence(op_stk.getTop(), sym))
+				{
+					pfx_expr+=op_stk.getTop();
+					op_stk.pop();
+				}
+				op_stk.push(sym);
+			}
+		}
+		while (!op_stk.isEmpty())
+		{
+			pfx_expr+=op_stk.getTop();
+			op_stk.pop();
+		}
+	}
+
+}
+bool MathExp::precedence(char opr1, char opr2)
 {
 	// If opr1 has equal or higher precedence than opr2 fxn will return true
 	int prec1, prec2;
@@ -93,7 +133,7 @@ bool Infix::precedence(char opr1, char opr2)
 	}
 	return (prec1 >= prec2);
 }
-bool Infix::isOperator(const char opr)
+bool MathExp::isOperator(const char opr)
 {
 	switch (opr)
 	{
