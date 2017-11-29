@@ -11,7 +11,6 @@
 class Stack {
 public:
 	Stack(int max=100);
-	~Stack();
 	void push(char item);
 	char pop();
 

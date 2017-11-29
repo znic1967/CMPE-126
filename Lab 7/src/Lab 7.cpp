@@ -15,7 +15,6 @@ int main() {
 	ifstream fin;
 	fin.open("palindrome.txt");
 	if (fin.fail()) cout<<"File failed to open."<<endl;
-
 	string line="";
 	char sym='\0';
 	Stack palStack;
@@ -36,10 +35,7 @@ int main() {
 				palQueue.addQueue(sym);
 			}
 		}
-		//cout<<"Stack: "; palStack.print(); cout<<endl;
-		//cout<<"Queue: "; palQueue.print(); cout<<endl;
-		//cout<<"Palindrome check..."<<endl;
-		while (palStack.getTopIndex()!=0) //While front=rear keep going
+		while (palStack.getTopIndex()!=0)
 		{
 			char rear=palStack.pop();
 			char front=palQueue.getFrontChar();
@@ -55,6 +51,4 @@ int main() {
 		}
 		else cout<<"No"<<endl;
 	}
-	cout<<"End"<<endl;
-
 }

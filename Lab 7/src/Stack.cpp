@@ -14,13 +14,6 @@ Stack::Stack(int max)
 	top=0;
 	list=new char(max);
 }
-
-Stack::~Stack()
-{
-	top=0;
-	delete [] list;
-}
-
 void Stack::push(char item)
 {
 	list[top++]=item;

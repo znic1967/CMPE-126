@@ -13,9 +13,9 @@ public:
 	Queue();
 	void addQueue(char c);
 	void delQueue();
-	~Queue();
 	void print();
 	void clear();
+
 	//Getters
 	char getFrontChar();
 private:

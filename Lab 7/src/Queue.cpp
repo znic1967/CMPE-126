@@ -17,11 +17,6 @@ Queue::Queue()
 	maxsize = 100;
 	list = new char[maxsize];
 }
-
-Queue::~Queue()
-{
-	delete [] list;
-}
 char Queue::getFrontChar()
 {
 	return list[front];
