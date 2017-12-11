@@ -17,12 +17,11 @@ public:
 
 	//Getters
 	int getLength();
-	bool getLoaded();
-	bool getListIn();
 	int* getDataAry();
 	Node* getHead();
 
 	//Member Functions
+	void clear();
 	void load(string data_type);
 	void insert_back(int num);
 	void printData();
@@ -31,17 +30,15 @@ public:
 	void swap(int &v1, int &v2);
 	bool sequentialNoRecursion(int e);
 	bool sequentialRecursion(int ary[], int size, int e);
-	int binarySearchNoRecursion(int value, int left, int right);
-	int binarySearchRecursion(int value, int left, int right);
-	int linkedListNoRecursion(int element);
-	int linkedListRecursion(int element, Node* head);
+	bool binarySearchNoRecursion(int value, int left, int right);
+	bool binarySearchRecursion(int value, int left, int right);
+	bool linkedListNoRecursion(int element);
+	bool linkedListRecursion(int element, Node* head);
 private:
 	int data[30];
 	Node* head;
 	Node* tail;
 	int length;
-	bool loaded;
-	bool listIn;
 };
 
 #endif /* SEARCH_H_ */

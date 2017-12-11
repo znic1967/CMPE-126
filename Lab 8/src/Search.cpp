@@ -6,6 +6,7 @@
 // Description : Lab 8
 //============================================================================
 #include "Search.h"
+#include "Node.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -13,8 +14,6 @@ using namespace std;
 Search::Search()
 {
 	length=0;
-	loaded=false;
-	listIn=false;
 	head=NULL;
 	tail=NULL;
 	for (int i=0; i<50; i++)
@@ -30,17 +29,13 @@ int Search::getLength()
 {
 	return length;
 }
-bool Search::getLoaded()
-{
-	return loaded;
-}
-bool Search::getListIn()
-{
-	return listIn;
-}
 Node* Search::getHead()
 {
 	return head;
+}
+void Search::clear()
+{
+	length=0;
 }
 void Search::load(string data_type)
 {
@@ -55,7 +50,6 @@ void Search::load(string data_type)
 			data[length]=num;
 			length++;
 		}
-		loaded=true;
 	}
 	if (data_type=="ll") //load data into doubly linked list
 	{
@@ -63,7 +57,6 @@ void Search::load(string data_type)
 		{
 			insert_back(num);
 		}
-		listIn=true;
 	}
 	fin.close();
 }
@@ -142,49 +135,47 @@ bool Search::sequentialRecursion(int ary[], int size, int e)
 		{
 			return true;
 		}
-	sequentialRecursion(data, size-1, e);
+	return sequentialRecursion(data, size-1, e);
 }
-int Search::binarySearchNoRecursion(int value, int left, int right)
+bool Search::binarySearchNoRecursion(int value, int left, int right)
 {
-	while (left <= right) {
+	while (left <= right)
+	{
 		int middle = (left + right) / 2;
-		if (data[middle] == value)
-			  return middle;
-		else if (data[middle] > value)
-			  right = middle - 1;
-		else
-			  left = middle + 1;
-		}
-	    return -1;
+		if (data[middle] == value) return true;
+		else if (data[middle] > value) right = middle - 1;
+		else left = middle + 1;
+	}
+	    return false;
 }
-int Search::binarySearchRecursion(int value, int left, int right)
+bool Search::binarySearchRecursion(int value, int left, int right)
 {
 		int middle = (left + right) / 2;
-		if (left>right) return -1;
+		if (left>right) return false;
 		if (data[middle] == value) return middle;
 		else if (data[middle] > value)
-			binarySearchRecursion(value, left, middle-1);
+			return binarySearchRecursion(value, left, middle-1);
 		else
-			binarySearchRecursion(value, middle+1, right);
+			return binarySearchRecursion(value, middle+1, right);
 }
-int Search::linkedListNoRecursion(int element)
+bool Search::linkedListNoRecursion(int element)
 {
 	for (Node* i=head; i!=NULL; i=i->getNext())
 	{
 		if (element==i->getElement())
 		{
-			return i->getElement();
+			return true;
 		}
 	}
-	return -1;
+	return false;
 }
 
-int Search::linkedListRecursion(int element, Node* head)
+bool Search::linkedListRecursion(int element, Node* head)
 {
-	if (head==NULL) return -1;
+	if (head==NULL) return false;
 	if (element==head->getElement())
 	{
-		return head->getElement();
+		return true;
 	}
-	linkedListRecursion(element, head->getNext());
+	return linkedListRecursion(element, head->getNext());
 }
