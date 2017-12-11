@@ -13,7 +13,7 @@ using namespace std;
 int main() {
 	int choice=7;
 	int element=0;
-	int ary[10];
+	int result=0;
 	Search s;
 	 do {
 	        cout<<"\nChoose your search type:";
@@ -24,13 +24,13 @@ int main() {
 	        cout<<"\n5. Linked List: Search without recursion";
 	        cout<<"\n6. Linked List: Search with recursion";
 	        cout<<"\nEnter 0 to exit.";
-	        //cin>>choice;
-	        choice=2;
+	        cin>>choice;
+	        //choice=4;
 	        cout<<"Your choice: "<<choice<<endl;
 
 	        if (choice==1)
 	        {
-	        	if (!s.getLoaded()) s.load(); //Load if data is not already in
+	        	if (!s.getLoaded()) s.load("ary"); //Load if data is not already in
 	        	s.printData();
 	        	cout<<"\nSpecify the element to be searched for: ";
 	        	cin>>element;
@@ -39,15 +39,38 @@ int main() {
 	        }
 	        if (choice==2)
 	        {
-	        	if (!s.getLoaded()) s.load(); //Load if data is not already in
+	        	if (!s.getLoaded()) s.load("ary"); //Load if data is not already in
 	        	s.printData();
 	        	cout<<"\nSpecify the element to be searched for: ";
-	        	//cin>>element;
-	        	element=0;
+	        	cin>>element;
+	        	//element=0;
 	        	if(s.sequentialRecursion(s.getDataAry(), s.getLength()-1, element)) cout<<"Element found!"<<endl;
 	        	else cout<<"Element not found."<<endl;
 	        }
 	        if (choice==3)
+	        {
+	        	if (!s.getLoaded()) s.load("ary"); //Load if data is not already in
+	        	s.sortData();
+	        	cout<<"\nSorted Data: "; s.printData();
+	        	cout<<"\nSpecify the element to be searched for: ";
+	        	cin>>element;
+	        	result=s.binarySearchNoRecursion(element, 0, s.getLength());
+	        	if (result>0) cout<<"Found element: "<<element<<endl;
+	        	else cout<<"Element not found."<<endl;
+	        }
+	        if (choice==4)
+	        {
+	        	if (!s.getLoaded()) s.load("ary"); //Load if data is not already in
+				s.sortData();
+				cout<<"\nSorted Data: "; s.printData();
+				cout<<"\nSpecify the element to be searched for: ";
+				cin>>element;
+				//element=44;
+				result=s.binarySearchRecursion(element, 0, s.getLength());
+				if (result>0) cout<<"Found element: "<<element<<endl;
+				else cout<<"Element not found."<<endl;
+	        }
+	        if (choice==5)
 	        {
 
 	        }
