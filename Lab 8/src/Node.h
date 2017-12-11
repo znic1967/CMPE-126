@@ -1,10 +1,10 @@
-/*
- * Node.h
- *
- *  Created on: Dec 10, 2017
- *      Author: Lt_Ballzacki
- */
-
+//============================================================================
+// Name        : Zack Nicholson
+// Professor   : Frank Lin
+// Class       : CMPE 126-05
+// Date        : 10 December 2017
+// Description : Lab 8
+//============================================================================
 #ifndef NODE_H_
 #define NODE_H_
 
@@ -13,15 +13,14 @@ public:
 	Node();
 
 	//Getters
-	//Stock getStock();
-	//StockNode* getNext();
+	int getElement();
+	Node* getNext();
+	Node* getPrev();
 
 	//Setters
-	//void setStock(Stock s);
-	//void setNext(StockNode* n);
-
-	//Overloaded Operators
-	//friend istream& operator>>(istream& in, StockNode& s);
+	void setElement(int e);
+	void setNext(Node* n);
+	void setPrev(Node* n);
 private:
 	int element;
 	Node* next;
